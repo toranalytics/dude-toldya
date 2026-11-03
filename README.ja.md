@@ -5,7 +5,7 @@
 やさしい説明（何ができて何ができないか、末尾にテスト詳細）: [한국어](https://toranalytics.github.io/otw-what-it-does/) · [English](https://toranalytics.github.io/en/otw-what-it-does/) · [中文](https://toranalytics.github.io/zh/otw-what-it-does/)（日本語版はありません）。リリースノート: [変更履歴](CHANGELOG.md)。
 
 <p align="center">
-  <img src="assets/hero.png" alt="Off the Wall: ターミナルの上で過去の指摘を引用するピクセルアートのオウム" width="100%" />
+  <img src="assets/hero.png" alt="軽く頭を叩かれたピクセルアートの AI ロボット案" width="100%" />
 </p>
 
 <p align="center">

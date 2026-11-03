@@ -5,7 +5,7 @@
 쉬운 설명(무엇을 하고 무엇을 못 하는지, 끝에 시험 상세): [한국어](https://toranalytics.github.io/otw-what-it-does/) · [English](https://toranalytics.github.io/en/otw-what-it-does/) · [中文](https://toranalytics.github.io/zh/otw-what-it-does/). 릴리스 노트: [변경 내역](CHANGELOG.md).
 
 <p align="center">
-  <img src="assets/hero.png" alt="Off the Wall: 터미널 위의 픽셀 앵무새가 과거 지적을 인용하는 그림" width="100%" />
+  <img src="assets/hero.png" alt="꿀밤을 맞는 픽셀 AI 로봇 마스코트 시안" width="100%" />
 </p>
 
 <p align="center">

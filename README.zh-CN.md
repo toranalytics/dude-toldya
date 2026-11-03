@@ -5,7 +5,7 @@
 通俗说明(能做什么、不能做什么,末尾附测试细节):[中文](https://toranalytics.github.io/zh/otw-what-it-does/) · [English](https://toranalytics.github.io/en/otw-what-it-does/) · [한국어](https://toranalytics.github.io/otw-what-it-does/)。发布说明:[更新日志](CHANGELOG.md)。
 
 <p align="center">
-  <img src="assets/hero.png" alt="Off the Wall：终端上的像素鹦鹉，引用你过去的纠正" width="100%" />
+  <img src="assets/hero.png" alt="受到轻轻敲击的像素 AI 机器人形象草稿" width="100%" />
 </p>
 
 <p align="center">
