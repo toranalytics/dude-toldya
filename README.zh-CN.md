@@ -91,6 +91,8 @@ codex plugin add dude-toldya@dude-toldya
 
 然后在 Codex 中打开一次 `/hooks` 并信任 Dude Toldya 的钩子。在信任之前，Codex 不会运行插件钩子。
 
+**从 Off the Wall 升级：** 插件名已更改，`off-the-wall@off-the-wall` 现在会报 "plugin not found"。请按上面的方式安装 `dude-toldya@dude-toldya`，并在插件管理里删除旧插件，避免两套钩子同时运行。Codex 会再次要求你信任钩子。`~/.otw` 中已保存的纠正会保留。
+
 **2. 用示例历史试运行报告**（不需要你自己的记录）
 
 ```bash
