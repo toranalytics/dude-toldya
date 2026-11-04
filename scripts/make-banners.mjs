@@ -7,15 +7,15 @@ const root = fileURLToPath(new URL('..', import.meta.url))
 const icon = readFileSync(root + 'assets/icon.png').toString('base64')
 function banner(width, height, compact = false) {
   const h = compact ? 800 : 900
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 1600 ${h}" role="img" aria-label="Off the Wall: correction recall with workspace boundaries">
-<title>Off the Wall: correction recall with workspace boundaries</title>
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 1600 ${h}" role="img" aria-label="Dude Toldya: correction recall with workspace boundaries">
+<title>Dude Toldya: correction recall with workspace boundaries</title>
 <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#171a22"/><stop offset="1" stop-color="#26212b"/></linearGradient></defs>
 <rect width="1600" height="${h}" fill="url(#bg)"/>
 <g font-family="DejaVu Sans,Arial,sans-serif" fill="#f0ece4">
 <image href="data:image/png;base64,${icon}" x="94" y="94" width="84" height="84"/>
 <text x="202" y="130" fill="#e9ae69" font-size="22" letter-spacing="3">CLAUDE CODE + CODEX</text>
 <text x="202" y="166" fill="#a8a5b0" font-size="23">Coding-agent correction recall</text>
-<text x="94" y="285" font-size="94" font-weight="750" letter-spacing="-4">Off the Wall</text>
+<text x="94" y="285" font-size="94" font-weight="750" letter-spacing="-4">Dude Toldya</text>
 <text x="98" y="354" fill="#d3cdd8" font-size="32">Past corrections, with clearer boundaries.</text>
 <rect x="94" y="405" width="850" height="208" rx="18" fill="#20242e" stroke="#49434d"/>
 <text x="124" y="446" fill="#e9ae69" font-size="18" letter-spacing="1.5">SYNTHETIC FORMAT EXAMPLE</text>

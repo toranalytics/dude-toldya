@@ -1,4 +1,4 @@
-// `otw forget`: delete what Off the Wall stored, on request. Foreground only; it never runs from a hook.
+// `duto forget`: delete what Dude Toldya stored, on request. Foreground only; it never runs from a hook.
 // Deleting or replacing corrections.jsonl changes its file identity, so any capture that was already authorized
 // (see store.mjs) is rejected when it tries to append afterwards.
 import { lstatSync, readFileSync, readdirSync, renameSync, unlinkSync, writeFileSync } from 'node:fs'
@@ -60,13 +60,13 @@ export function applyForget(root, scope, plan) {
   return done
 }
 
-export const USAGE = `otw forget --all [--yes]
-  Deletes every stored correction, the per-session state and the diagnostic log under the Off the Wall folder.
+export const USAGE = `duto forget --all [--yes]
+  Deletes every stored correction, the per-session state and the diagnostic log under the Dude Toldya folder.
   config.json stays. Without --yes it only shows what would be deleted.
-otw forget --project [DIR] [--yes]
+duto forget --project [DIR] [--yes]
   Deletes only the corrections (and session state) recorded for that working directory (default: the current one).
   The diagnostic log is not touched in this mode.
-Nothing outside the Off the Wall folder is changed: Claude Code and Codex histories and anything your model provider
+Nothing outside the Dude Toldya folder is changed: Claude Code and Codex histories and anything your model provider
 already received stay as they are.`
 
 export function runForget(root, args, cwd) {

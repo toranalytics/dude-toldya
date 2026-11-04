@@ -1,5 +1,5 @@
-// `otw bench`: a quick check you can run yourself. The same 11 made-up-habit tasks are given to your own `claude` CLI twice,
-// once with recall off and once with recall on (the installed Off the Wall plugin does the real work through its hooks).
+// `duto bench`: a quick check you can run yourself. The same 11 made-up-habit tasks are given to your own `claude` CLI twice,
+// once with recall off and once with recall on (the installed Dude Toldya plugin does the real work through its hooks).
 // Everything happens in temporary directories. Needs the plugin installed in Claude Code and `claude` logged in.
 import fs from 'node:fs'
 import os from 'node:os'
@@ -11,9 +11,9 @@ import { projectKey } from './scope.mjs'
 
 const HERE = path.dirname(fileURLToPath(import.meta.url))
 const ALLOWED = 'Read,Edit,Write,Bash(node:*),Bash(wc:*),Bash(ls:*),Bash(cat:*),Bash(date:*),Bash(grep:*)'
-export const USAGE = `otw bench [--model haiku|sonnet] [--reps 3] [--yes] [--bin claude] [--json FILE] [--keep] [--selftest]
+export const USAGE = `duto bench [--model haiku|sonnet] [--reps 3] [--yes] [--bin claude] [--json FILE] [--keep] [--selftest]
   Runs 11 small tasks, each needing a habit the model cannot know, with your own claude CLI: once with recall off and
-  once with recall on (the Off the Wall plugin must be installed). Prints how often the habit was followed in each case.
+  once with recall on (the Dude Toldya plugin must be installed). Prints how often the habit was followed in each case.
   Without --yes it only shows what it would do. --selftest checks the tasks and the hook without calling any model.`
 const tasksFile = () => pathToFileURL(path.join(HERE, '../bench/tasks.mjs')).href
 const corrections = () => JSON.parse(fs.readFileSync(path.join(HERE, '../bench/corrections.json'), 'utf8'))
@@ -45,7 +45,7 @@ export async function selftest(log = console.log) {
     let d = fresh(); chk(`${t.id} untouched fails`, !t.score(d, [], '').pass)
     d = fresh(); const g = t.good(d); chk(`${t.id} known-good passes`, t.score(d, g.ev || [], g.text || '').pass)
     d = fresh(); const b = t.bad(d); chk(`${t.id} known-bad fails`, !t.score(d, b.ev || [], b.text || '').pass)
-    for (const arm of ['none', 'otw']) { const p = prepare(t, arm, 1, Date.now()), out = hookBlock(t, p.dir, p.home); chk(`${t.id} ${arm} block ${arm === 'otw' ? 'present' : 'absent'}`, arm === 'otw' ? out.includes('[off-the-wall]') : !out.includes('[off-the-wall]')); if (arm === 'otw' && out.includes(corrections().find(c => c.id === t.pref).quote.slice(0, 20))) found++ }
+    for (const arm of ['none', 'otw']) { const p = prepare(t, arm, 1, Date.now()), out = hookBlock(t, p.dir, p.home); chk(`${t.id} ${arm} block ${arm === 'otw' ? 'present' : 'absent'}`, arm === 'otw' ? out.includes('[dude-toldya]') : !out.includes('[dude-toldya]')); if (arm === 'otw' && out.includes(corrections().find(c => c.id === t.pref).quote.slice(0, 20))) found++ }
   }
   chk(`the target correction is in the block for at least 8 of 11 tasks (found ${found})`, found >= 8)
   log(bad ? `selftest FAILED: ${bad}` : 'selftest passed'); return bad ? 1 : 0
@@ -54,7 +54,7 @@ export async function selftest(log = console.log) {
 export async function runBench({ model = 'haiku', reps = 3, yes = false, bin = 'claude', json = null, keep = false, log = console.log, spawn = spawnSync } = {}) {
   const { PREF } = await import(tasksFile())
   const total = PREF.length * 2 * reps, cost = (RATE[model] ?? RATE.sonnet) * total
-  log(`otw bench: ${PREF.length} tasks x 2 conditions (recall off / on) x ${reps} reps = ${total} runs with \`${bin} -p\`, model ${model}.`)
+  log(`duto bench: ${PREF.length} tasks x 2 conditions (recall off / on) x ${reps} reps = ${total} runs with \`${bin} -p\`, model ${model}.`)
   log(`Rough cost on your own Claude plan: USD ${cost.toFixed(2)} (measured earlier: haiku about 0.006 and sonnet about 0.06 per run), about ${Math.round(total * 12 / 60)} minutes.`)
   log('Task prompts, fabricated corrections and task files may be sent to your model provider. Claude Code may also load your global instructions, settings, and other plugins, and may save session transcripts under its configuration directory. Review your configuration before running.')
   log('Your own CLAUDE.md or global rules are not removed: a rule of yours that matches a task (for example a commit style) can raise the "recall off" score.')
@@ -75,8 +75,8 @@ export async function runBench({ model = 'haiku', reps = 3, yes = false, bin = '
     if (r.error && r.error.code === 'ENOENT') { log(`STOP: \`${bin}\` was not found. Install the Claude Code CLI, or pass its full path with --bin (find it with: which claude). If you use a separate Claude profile, set CLAUDE_CONFIG_DIR to it as well.`); return 3 }
     if (res.type !== 'result' || res.is_error === true || (res.subtype && res.subtype !== 'success') || r.status !== 0 || r.error || /Not logged in/i.test(String(res.result || ''))) { log(`STOP: no usable result (${String(res.result || r.stderr || 'no output').slice(0, 120)}). Log in to claude and run it again.`); return 3 }
     let seen = false
-    if (res.session_id && fs.existsSync(projDir)) for (const d of fs.readdirSync(projDir)) { const f = path.join(projDir, d, res.session_id + '.jsonl'); if (fs.existsSync(f)) seen = fs.readFileSync(f, 'utf8').includes('[off-the-wall]') }
-    if (arm === 'otw' && !seen) { log('STOP: the Off the Wall plugin did not add its block in a recall-on run. Install it in Claude Code (/plugin install off-the-wall --marketplace toranalytics/off-the-wall), restart, and run again. Nothing was changed.'); return 4 }
+    if (res.session_id && fs.existsSync(projDir)) for (const d of fs.readdirSync(projDir)) { const f = path.join(projDir, d, res.session_id + '.jsonl'); if (fs.existsSync(f)) { const body = fs.readFileSync(f, 'utf8'); seen = body.includes('[dude-toldya]') || body.includes('[off-the-wall]') } }
+    if (arm === 'otw' && !seen) { log('STOP: the Dude Toldya plugin did not add its block in a recall-on run. Install it in Claude Code (/plugin install dude-toldya --marketplace toranalytics/dude-toldya), restart, and run again. Nothing was changed.'); return 4 }
     if (arm === 'none' && seen) { log('STOP: a block was added in a recall-off run, so the plugin ignored its temporary settings; results would not mean anything.'); return 4 }
     const sc = t.score(p.dir, ev, String(res.result || ''))
     rows.push({ task: t.id, arm, rep, pass: !!sc.pass, cost: res.total_cost_usd || 0 })
@@ -86,7 +86,7 @@ export async function runBench({ model = 'haiku', reps = 3, yes = false, bin = '
   const tot = { none: [0, 0], otw: [0, 0] }, by = {}
   for (const r of rows) { by[r.task] ??= { none: [0, 0], otw: [0, 0] }; by[r.task][r.arm][0] += r.pass; by[r.task][r.arm][1]++; tot[r.arm][0] += r.pass; tot[r.arm][1]++ }
   log('\ntask    recall off  recall on'); for (const [k, v] of Object.entries(by)) log(`${k.replace('task-', '').padEnd(7)} ${`${v.none[0]}/${v.none[1]}`.padEnd(11)} ${v.otw[0]}/${v.otw[1]}`)
-  const line = `Habit followed: ${tot.none[0]}/${tot.none[1]} (${pct(tot.none[0], tot.none[1])}) with recall off, ${tot.otw[0]}/${tot.otw[1]} (${pct(tot.otw[0], tot.otw[1])}) with Off the Wall (model ${model}, ${reps} reps per task and condition).`
+  const line = `Habit followed: ${tot.none[0]}/${tot.none[1]} (${pct(tot.none[0], tot.none[1])}) with recall off, ${tot.otw[0]}/${tot.otw[1]} (${pct(tot.otw[0], tot.otw[1])}) with Dude Toldya (model ${model}, ${reps} reps per task and condition).`
   log('\n' + line); log('Made-up habits, small tasks, your own environment: an illustration of what the plugin does, not a promise about your real work.')
   log(`Cost reported by the CLI: USD ${rows.reduce((a, r) => a + r.cost, 0).toFixed(2)}.`)
   if (json) fs.writeFileSync(json, JSON.stringify({ model, reps, totals: tot, rows }, null, 2))

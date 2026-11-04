@@ -1,11 +1,11 @@
 blank_issues_enabled: true
 contact_links:
   - name: How it works
-    url: https://github.com/toranalytics/off-the-wall#what-the-agent-sees
-    about: What Off the Wall adds to each prompt, and when
+    url: https://github.com/toranalytics/dude-toldya#what-the-agent-sees
+    about: What Dude Toldya adds to each prompt, and when
   - name: Evidence
-    url: https://github.com/toranalytics/off-the-wall#evidence
+    url: https://github.com/toranalytics/dude-toldya#evidence
     about: How the numbers in the README were measured
   - name: Settings
-    url: https://github.com/toranalytics/off-the-wall#settings
+    url: https://github.com/toranalytics/dude-toldya#settings
     about: Turning features off and choosing models

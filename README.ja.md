@@ -2,6 +2,8 @@
   <a href="README.md">English</a> | <a href="README.ko.md">한국어</a> | <strong>日本語</strong> | <a href="README.zh-CN.md">中文</a>
 </p>
 
+> **Dude Toldya** は以前 **Off the Wall** という名前でした。コマンドは `duto` になり、`otw` も引き続き使えます。保存済みの指摘は `~/.otw` にそのまま残ります。
+
 やさしい説明（何ができて何ができないか、末尾にテスト詳細）: [한국어](https://toranalytics.github.io/otw-what-it-does/) · [English](https://toranalytics.github.io/en/otw-what-it-does/) · [中文](https://toranalytics.github.io/zh/otw-what-it-does/)（日本語版はありません）。リリースノート: [変更履歴](CHANGELOG.md)。
 
 <p align="center">
@@ -9,7 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/before-after-en.png" alt="同じ依頼、同じモデル(Claude Sonnet)を1回ずつ実行した実際の出力です。Off the Wall がないと、コミットメッセージ、要約、PR 説明は保存された習慣を無視し、あると守ります。3タスク、最初の実行をそのまま掲載、指摘はデモ用に作ったものです。" width="100%" />
+  <img src="assets/before-after-en.png" alt="同じ依頼、同じモデル(Claude Sonnet)を1回ずつ実行した実際の出力です。Dude Toldya がないと、コミットメッセージ、要約、PR 説明は保存された習慣を無視し、あると守ります。3タスク、最初の実行をそのまま掲載、指摘はデモ用に作ったものです。" width="100%" />
 </p>
 
 <p align="center"><sub>これは例示です。測定した数値は下の根拠の節にあります。</sub></p>
@@ -18,19 +20,19 @@
   <img src="assets/demo.svg" alt="作ったサンプルの図で、録画ではありません。1日目に指摘を保存し、8日目の似た依頼でエージェントが答える前にその指摘がそのまま付きます。" width="100%" />
 </p>
 
-<h1 align="center">Off the Wall</h1>
+<h1 align="center">Dude Toldya</h1>
 
 <p align="center">
   <strong>同じ指摘を、二度言わせない。</strong>
   <br/>
   <sub><strong>Claude Code</strong> と <strong>Codex</strong> 用のプラグイン。同じ作業ディレクトリであなたが以前した指摘を、次の回答の前にそのまま置きます。</sub>
   <br/>
-  <sub>私のテストでは、Claude はモデルが知り得ない習慣を94%(33回中31回)無視しました。Off the Wall があると39%(33回中13回)でした。テスト用に作った習慣、Claude Sonnet での結果です。<a href="#自分で確かめる">自分で確かめる</a>。</sub>
+  <sub>私のテストでは、Claude はモデルが知り得ない習慣を94%(33回中31回)無視しました。Dude Toldya があると39%(33回中13回)でした。テスト用に作った習慣、Claude Sonnet での結果です。<a href="#自分で確かめる">自分で確かめる</a>。</sub>
 </p>
 
 <p align="center">
-  <a href="https://github.com/toranalytics/off-the-wall/actions/workflows/ci.yml"><img alt="tests" src="https://img.shields.io/github/actions/workflow/status/toranalytics/off-the-wall/ci.yml?branch=main&label=tests&style=flat-square"></a>
-  <a href="https://github.com/toranalytics/off-the-wall/releases"><img alt="release" src="https://img.shields.io/github/v/release/toranalytics/off-the-wall?style=flat-square"></a>
+  <a href="https://github.com/toranalytics/dude-toldya/actions/workflows/ci.yml"><img alt="tests" src="https://img.shields.io/github/actions/workflow/status/toranalytics/dude-toldya/ci.yml?branch=main&label=tests&style=flat-square"></a>
+  <a href="https://github.com/toranalytics/dude-toldya/releases"><img alt="release" src="https://img.shields.io/github/v/release/toranalytics/dude-toldya?style=flat-square"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-green?style=flat-square"></a>
   <img alt="Claude Code plugin" src="https://img.shields.io/badge/Claude%20Code-plugin-d97757?style=flat-square">
   <img alt="Codex plugin" src="https://img.shields.io/badge/Codex-plugin-10a37f?style=flat-square">
@@ -46,12 +48,12 @@
   <a href="#privacy">プライバシー</a>
 </p>
 
-**モデルは、コミットメッセージの書き方や日付の書き方のような、あなたの習慣を知りません。そういう作業を Claude に33回やらせました。Off the Wall がないと Claude（Sonnet）は習慣を2回守り、あると20回守りました。** 以前のあなたの指摘を、そのままもう一度見せるからです。これは私が作ったテスト用の習慣で、実際のユーザーの記録ではありません。haiku では1回から17回、測り直すと2回から25回でした。[測定方法](#evidence)
+**モデルは、コミットメッセージの書き方や日付の書き方のような、あなたの習慣を知りません。そういう作業を Claude に33回やらせました。Dude Toldya がないと Claude（Sonnet）は習慣を2回守り、あると20回守りました。** 以前のあなたの指摘を、そのままもう一度見せるからです。これは私が作ったテスト用の習慣で、実際のユーザーの記録ではありません。haiku では1回から17回、測り直すと2回から25回でした。[測定方法](#evidence)
 
 **同じ作業ディレクトリでのあなたの指摘を、エージェントが答える前に原文のまま引用します。何を一番よく指摘しているかを、ローカルでモデルの分類として示すレポートがあります。サブエージェントのモデル選択のガイドも提供します。**
 
 「聞かずに選んで進めて」「本当にテストを実行した?」といった指摘は、たいてい次のセッションで忘れられます。
-Off the Wall はそうしたメッセージをローカルに保存し、回答の前に、同じ作業ディレクトリで記録された指摘を最大 6 件、あなた自身の
+Dude Toldya はそうしたメッセージをローカルに保存し、回答の前に、同じ作業ディレクトリで記録された指摘を最大 6 件、あなた自身の
 言葉でエージェントに見せます。すでに使っている `claude` / `codex` CLI を経由するので、別途 API キーは不要です。
 ただし、何も外部に出ないという意味ではありません。[プライバシー](#privacy)を参照してください。
 
@@ -61,9 +63,9 @@ Off the Wall はそうしたメッセージをローカルに保存し、回答�
 
 ---
 
-## なぜ Off the Wall か
+## なぜ Dude Toldya か
 
-| 問題 | 起きること | Off the Wall |
+| 問題 | 起きること | Dude Toldya |
 | :-- | :-- | :-- |
 | 繰り返す指摘 | 今月 10 回目の「聞かずにやって」 | 過去のあなたの言葉を次の回答の前に置く |
 | 定着しないルール | 指摘を一行ルールに要約しても変化が少ない | 要約せず、あなた自身の言葉を引用。小さな再生実験 1 件では、要約ルールはランダムなルールより良くなかった([根拠](#evidence)) |
@@ -78,29 +80,29 @@ Off the Wall はそうしたメッセージをローカルに保存し、回答�
 Claude Code のプロンプトで:
 
 ```
-/plugin install off-the-wall --marketplace toranalytics/off-the-wall
+/plugin install dude-toldya --marketplace toranalytics/dude-toldya
 ```
 
 Codex:
 
 ```bash
-codex plugin marketplace add toranalytics/off-the-wall
-codex plugin add off-the-wall@off-the-wall
+codex plugin marketplace add toranalytics/dude-toldya
+codex plugin add dude-toldya@dude-toldya
 ```
 
-その後 Codex で `/hooks` を一度開き、Off the Wall のフックを信頼してください。信頼されるまで Codex はプラグインのフックを実行しません。
+その後 Codex で `/hooks` を一度開き、Dude Toldya のフックを信頼してください。信頼されるまで Codex はプラグインのフックを実行しません。
 
 **2. サンプル履歴でレポートを試す**(自分の履歴は不要)
 
 ```bash
-git clone https://github.com/toranalytics/off-the-wall && cd off-the-wall
-node bin/otw.mjs report --host claude --claude-dir examples/claude-history --days 0
+git clone https://github.com/toranalytics/dude-toldya && cd dude-toldya
+node bin/duto.mjs report --host claude --claude-dir examples/claude-history --days 0
 ```
 
 **3. 自分の履歴で実行し、そこから引用を始める**
 
 ```bash
-node bin/otw.mjs report --seed
+node bin/duto.mjs report --seed
 ```
 
 `--seed` なしの `report` は明示的なプロバイダー処理で、`capture: false` でも実行できます。`--seed` には capture が有効で、分類が終わるまで保存先と設定が変わらないことが必要です。許可が取り消された場合、結果は保存されません。
@@ -112,7 +114,7 @@ node bin/otw.mjs report --seed
 Node 18 以上が必要です。これまでの実ホストでの確認は2つです。Codex スモーク1回（codex-cli 0.162.1、0.2.0）と Claude Code ヘッドレス1回（2.1.311、プラグイン 0.2.1、保存と想起）で、どちらも Evidence にリンクしています。Claude Code の対話利用と現在の main の実ホストでの効果は未検証です。
 
 <a id="report"></a>
-何も起きない場合: Codex は `/hooks` で信頼するまでプラグインのフックを実行せず、`otw status` でフックの動作履歴を確認できます。
+何も起きない場合: Codex は `/hooks` で信頼するまでプラグインのフックを実行せず、`duto status` でフックの動作履歴を確認できます。
 
 ## 何を一番よく指摘しているか
 
@@ -127,7 +129,7 @@ Node 18 以上が必要です。これまでの実ホストでの確認は2つ�
 示していません。選ばれた抜粋はあなた自身の `claude` / `codex` CLI を通してモデルに送られます。`--seed` を付けると見つけた指摘を保存し、
 そのプロジェクトで次のプロンプトから引用を始められます。
 
-最後に、このリポジトリの [Discussions](https://github.com/toranalytics/off-the-wall/discussions/categories/show-and-tell)
+最後に、このリポジトリの [Discussions](https://github.com/toranalytics/dude-toldya/discussions/categories/show-and-tell)
 への投稿リンクが表示されます。多かった指摘の種類トップ3と回数が入力済みで、引用されたあなたの言葉は含まれません。
 回数はモデルの分類で誤りがあり得るので、元のメッセージをローカルで確認し、公開する前にあなた自身で内容を確認してください。
 自動で投稿されることはありません。
@@ -135,12 +137,12 @@ Node 18 以上が必要です。これまでの実ホストでの確認は2つ�
 <a id="how"></a>
 ## 何が想起されるかを事前に見る
 
-`node bin/otw.mjs explain "<プロンプト>"`（別の作業ディレクトリは `--cwd DIR`）は、そのプロンプトへの回答の前にどの保存済み指摘が引用されるかを、類似度スコアと除外された記録数とともに表示します。読み取り専用で、モデル呼び出しもファイル書き込みもしません。予想外の引用がなぜ付くのかを確かめる最も早い方法です。main にあり、0.3.1 リリースにはまだ含まれていません。
+`node bin/duto.mjs explain "<プロンプト>"`（別の作業ディレクトリは `--cwd DIR`）は、そのプロンプトへの回答の前にどの保存済み指摘が引用されるかを、類似度スコアと除外された記録数とともに表示します。読み取り専用で、モデル呼び出しもファイル書き込みもしません。予想外の引用がなぜ付くのかを確かめる最も早い方法です。main にあり、0.3.1 リリースにはまだ含まれていません。
 
 ## エージェントに見えるもの
 
 <p align="center">
-  <img src="assets/context.svg" alt="回答前に Off the Wall が追加するブロックの形式を示す図: 指摘の原文の例と、指摘を予測せよという指示。引用はサンプルレポートから取ったもので、関連度で選んだものではありません" width="92%" />
+  <img src="assets/context.svg" alt="回答前に Dude Toldya が追加するブロックの形式を示す図: 指摘の原文の例と、指摘を予測せよという指示。引用はサンプルレポートから取ったもので、関連度で選んだものではありません" width="92%" />
 </p>
 
 | タイミング | Claude Code | Codex |
@@ -172,7 +174,7 @@ Node 18 以上が必要です。これまでの実ホストでの確認は2つ�
   残します。フィルターであり、人間が書いた入力を完全に見分けるものではありません。
 - 関連度の基準(マッチガード)は、保存された指摘が依頼と十分に似ていて引用する価値があるかを判定します。現在の閾値は初期の
   エンジニアリング上の設定で、較正された精度の数値ではなく、適合率や再現率を主張するものでもありません。
-- メモリ管理 UI はありません。0.3.1 から `otw forget --all --yes` が保存された指摘、セッション状態、ログをすべて削除し、`otw forget --project --yes` は現在の作業ディレクトリの指摘だけを削除します。`--yes` がなければどちらも削除対象を表示するだけです。プロバイダー側のコピーや Claude Code/Codex の履歴には影響しません。0.3.1 より前にローカルの記録を消すには `~/.otw` 以下のファイルをご自身で
+- メモリ管理 UI はありません。0.3.1 から `duto forget --all --yes` が保存された指摘、セッション状態、ログをすべて削除し、`duto forget --project --yes` は現在の作業ディレクトリの指摘だけを削除します。`--yes` がなければどちらも削除対象を表示するだけです。プロバイダー側のコピーや Claude Code/Codex の履歴には影響しません。0.3.1 より前にローカルの記録を消すには `~/.otw` 以下のファイルをご自身で
   削除してください([プライバシー](#privacy))。`capture: false` にすると、新しいプロンプトや回答の抜粋は保存されません(すでに保存された指摘は消えません)。`status` で、
   プロジェクトと出所が付いた記録と隔離された記録の件数を確認できます。
 
@@ -183,7 +185,7 @@ Node 18 以上が必要です。これまでの実ホストでの確認は2つ�
   <img src="assets/routing.svg" alt="過去の 1 タスク、各条件 2 回の実行: モデルルールあり $0.171 と $0.173、なし $0.300 と $0.439。平均でも保証でもありません" width="92%" />
 </p>
 
-メインモデルがオーケストレーターとして、タスクに何が委ねられているかを見てサブエージェントのモデルを選びます。Off the Wall は
+メインモデルがオーケストレーターとして、タスクに何が委ねられているかを見てサブエージェントのモデルを選びます。Dude Toldya は
 このガイドを与え、`model` 引数の抜けをチェックするだけです。モデルを強制せず、より安いルーティングや費用削減を
 保証しません。図は過去のテスト 1 件です。[根拠](#evidence)を参照してください。
 
@@ -199,17 +201,17 @@ Codex が保持する一覧(`~/.codex/models_cache.json`)を読み、説明か�
 <a id="evidence"></a>
 ## 自分で確かめる
 
-`otw bench` は、モデルが知り得ない習慣が必要な小さなタスク11個を、あなたの `claude` CLI で実行します。想起をオフにして1回、Off the Wall をオンにして1回です。それぞれ習慣が守られた回数を表示します。Claude Code にプラグインが入っていて、`claude` にログインしている必要があります。
+`duto bench` は、モデルが知り得ない習慣が必要な小さなタスク11個を、あなたの `claude` CLI で実行します。想起をオフにして1回、Dude Toldya をオンにして1回です。それぞれ習慣が守られた回数を表示します。Claude Code にプラグインが入っていて、`claude` にログインしている必要があります。
 
 **提供状況:** `bench` はリポジトリの main にあり、0.3.1 リリースや npm パッケージにはありません。先にクイックスタートに従ってリポジトリを複製し、そのフォルダで実行してください。初回は隔離プロファイルの実験用に変更したプラグインを使い、通常のインストールでは未検証です。Claude Code はグローバル指示や他のプラグインを読み込み、セッション記録を保存することがあります。
 
 ```bash
-node bin/otw.mjs bench                        # 何をするかと大まかな費用だけ表示し、実行しない
-node bin/otw.mjs bench --yes                  # haiku で66回、あなたのプランで約0.4ドル、13分
-node bin/otw.mjs bench --yes --model sonnet   # 約4ドル
+node bin/duto.mjs bench                        # 何をするかと大まかな費用だけ表示し、実行しない
+node bin/duto.mjs bench --yes                  # haiku で66回、あなたのプランで約0.4ドル、13分
+node bin/duto.mjs bench --yes --model sonnet   # 約4ドル
 ```
 
-習慣は作ったもので、タスクは小さいです。あなたの CLAUDE.md やグローバルルールはそのまま有効なので、タスクに合うルールがあると「オフ」の点数が上がることがあります。初回の実行(作者の端末、haiku、66回、0.33ドル): オフ 3/33、Off the Wall 20/33([記録](docs/data/bench-first-run/result.md))。上の数字は修正240件のストアから出たもので、`otw bench` は11件を使うため数字は変わります。実行したら「haiku、66回: オフ 3/33、オン 19/33」のような一行を [issue](https://github.com/toranalytics/off-the-wall/issues) で知らせてもらえれば十分です。
+習慣は作ったもので、タスクは小さいです。あなたの CLAUDE.md やグローバルルールはそのまま有効なので、タスクに合うルールがあると「オフ」の点数が上がることがあります。初回の実行(作者の端末、haiku、66回、0.33ドル): オフ 3/33、Dude Toldya 20/33([記録](docs/data/bench-first-run/result.md))。上の数字は修正240件のストアから出たもので、`duto bench` は11件を使うため数字は変わります。実行したら「haiku、66回: オフ 3/33、オン 19/33」のような一行を [issue](https://github.com/toranalytics/dude-toldya/issues) で知らせてもらえれば十分です。
 
 ## 根拠
 
@@ -218,8 +220,8 @@ node bin/otw.mjs bench --yes --model sonnet   # 約4ドル
 | | 好みを守った回数 |
 |---|---|
 | 想起なし | 1/33 |
-| Off the Wall 既定 | 9/33 |
-| Off the Wall `recallWide`（0.3.0から既定） | 17/33 |
+| Dude Toldya 既定 | 9/33 |
+| Dude Toldya `recallWide`（0.3.0から既定） | 17/33 |
 
 - より大きなモデル（haiku の代わりに Claude Code の Sonnet、同じタスクとストア、66回）でも実行しました。想起なし 2/33、現在の既定 20/33で、タスク別では良くなったものが7、悪くなったものが0です（符号検定 p = 0.016）。合成の習慣、1マスあたり3回です。記録: [docs](docs/preference-experiment-2026-10-28.md)。
 - 採点器の不具合を直した後、3回目として再実行しました（実験5b、同じストアとタスク、99回追加）。想起なし 2/33、従来の既定 14/33、`recallWide` 25/33でした。同じ方向の標本が1つ増えただけで、数値が上がった分は一部が修正、一部が実行ごとのばらつきのため、最初の表は置き換えません。記録: [docs](docs/preference-experiment-2026-10-28.md)。
@@ -230,7 +232,7 @@ node bin/otw.mjs bench --yes --model sonnet   # 約4ドル
 
 
 <p align="center">
-  <img src="assets/evidence.svg" alt="何も付けない場合との勝ち・引き分け・負け: 実際の指摘 36/3/0、Off the Wall 25/11/3、ランダムなルール 18/15/6、要約ルール 14/17/8" width="92%" />
+  <img src="assets/evidence.svg" alt="何も付けない場合との勝ち・引き分け・負け: 実際の指摘 36/3/0、Dude Toldya 25/11/3、ランダムなルール 18/15/6、要約ルール 14/17/8" width="92%" />
 </p>
 
 測定値はすべて一人の履歴から得たもので(9/20 のレポート例は架空のセッション)、一般法則ではなく探索的な最初の結果です。
@@ -240,7 +242,7 @@ node bin/otw.mjs bench --yes --model sonnet   # 約4ドル
 **1 人のテキスト再生実験であり、一般的な発見ではありません。** 1 人のユーザーの履歴から選んだ依頼 39 件をテキストとして再実行しました。
 どれも実際には直後に指摘があり、その指摘がテキストだけで判断できるものです。Opus 5.5 が各条件で回答し、
 Sonnet(人ではなくモデル)が順序を入れ替えて二回、どちらの回答か分からない状態で比較し、両方の順序で一致したときだけ勝ちと
-数えました。Off the Wall の条件は引用 6 件と「指摘を予測せよ」の 1 行を組み合わせたもので、何も付けない場合に対して
+数えました。Dude Toldya の条件は引用 6 件と「指摘を予測せよ」の 1 行を組み合わせたもので、何も付けない場合に対して
 25 勝 11 分 3 敗、ランダムルールに対して 17 勝 14 分 8 敗でした(39 件での傾向にすぎず、確定した結果ではありません)。
 要約した一行ルールはランダムルールに勝てませんでした。独立した再現実験ではなく、実際の製品での利点を示すものでもありません。
 引用と指摘予測の 1 行を同時に試したので、引用だけで差が生じたという意味でもありません。「引用は要約より優れている」という
@@ -255,7 +257,7 @@ Sonnet(人ではなくモデル)が順序を入れ替えて二回、どちらの
 <a id="settings"></a>
 ## 設定
 
-`~/.otw/config.json` は任意で、ファイルがなければ通常の既定値を使います。有効な部分設定のスキーマは変わらず、明示した値が自動検出より優先されます。`recall`、`recallWide`、`capture`、`routing` は文字列でなく JSON の真偽値が必要です。先頭の UTF-8 BOM 1 個は許容します。既存ファイルが読めない、不正な JSON、オブジェクトでない、型・未知のキー・入れ子の値が不正な場合は安全側に停止し、4 フラグとも `false` になります。手動の `report` も履歴の読み取りやプロバイダー呼び出しの前に停止します。`node bin/otw.mjs status` は生の設定値やエラーではなく、安全化した `config-invalid` を表示します。
+`~/.otw/config.json` は任意で、ファイルがなければ通常の既定値を使います。有効な部分設定のスキーマは変わらず、明示した値が自動検出より優先されます。`recall`、`recallWide`、`capture`、`routing` は文字列でなく JSON の真偽値が必要です。先頭の UTF-8 BOM 1 個は許容します。既存ファイルが読めない、不正な JSON、オブジェクトでない、型・未知のキー・入れ子の値が不正な場合は安全側に停止し、4 フラグとも `false` になります。手動の `report` も履歴の読み取りやプロバイダー呼び出しの前に停止します。`node bin/duto.mjs status` は生の設定値やエラーではなく、安全化した `config-invalid` を表示します。
 
 `recall` は引用、`capture` は新しい抜粋の保存と指摘の記録、`routing` はモデル選択の案内を制御します。すべてのキーは任意です。設定例は [English README](README.md#settings) を参照してください。
 
@@ -266,7 +268,7 @@ Sonnet(人ではなくモデル)が順序を入れ替えて二回、どちらの
 
 ## プライバシー
 
-保存はローカルですが、ローカル保存であっても何も外部に出ないわけではありません。Off the Wall は `~/.otw` に次を保存します:
+保存はローカルですが、ローカル保存であっても何も外部に出ないわけではありません。Dude Toldya は `~/.otw` に次を保存します:
 - `corrections.jsonl`(もう引用されない古い記録を含む)
 - セッションごとの状態
 - `log.jsonl`
@@ -279,8 +281,8 @@ Sonnet(人ではなくモデル)が順序を入れ替えて二回、どちらの
 
 パブリッシャー側のテレメトリはなく、別途 API キーも不要です。ただし、プロバイダーが処理しないという意味ではありません。
 プロバイダーはこれらの抜粋をそのまま見ますし、契約プランの利用量や料金が発生することがあります。既定のイベントログとエラーログには原文の抜粋は含まれません。`OTW_DEBUG` を設定すると、
-原文の抜粋が `~/.otw/log.jsonl` に書かれることがあります。不明な履歴フレームや大きすぎるフレームは安全側で拒否され、プロジェクトや保留状態を推測しません。`~/.otw` を削除すると Off the Wall が保存したものは忘れますが、
-Claude Code や Codex の履歴やプロバイダー側のコピーまでは消えません。`otw forget` は 0.3.1 からあります（0.3.0 以前に削除コマンドはありません）。共有は手動です。
+原文の抜粋が `~/.otw/log.jsonl` に書かれることがあります。不明な履歴フレームや大きすぎるフレームは安全側で拒否され、プロジェクトや保留状態を推測しません。`~/.otw` を削除すると Dude Toldya が保存したものは忘れますが、
+Claude Code や Codex の履歴やプロバイダー側のコピーまでは消えません。`duto forget` は 0.3.1 からあります（0.3.0 以前に削除コマンドはありません）。共有は手動です。
 Discussions のリンクは回数と種類名を入力済みにするだけで、公開する前にあなたが確認します。
 
 ### Capture の制御と削除
@@ -301,7 +303,7 @@ Discussions のリンクは回数と種類名を入力済みにするだけで�
 - 入力分類器とマッチガードはフィルターです。自動テキストが返答として扱われることも、関連する指摘が漏れることもあります。
 - 範囲は正確に同じ作業ディレクトリ単位です。関連するフォルダ、移動したプロジェクト、worktree どうしでは引用を共有しません。
 - 引用はモデルにだけ見え、セッション中に画面には表示されません。
-- メモリ管理 UI はまだありません。保存した記録は `otw forget`（0.3.1 から）で削除できます。
+- メモリ管理 UI はまだありません。保存した記録は `duto forget`（0.3.1 から）で削除できます。
 
 ## 掲載先
 
@@ -315,10 +317,10 @@ Discussions のリンクは回数と種類名を入力済みにするだけで�
 - [awesome-context-engineering](https://github.com/yzfly/awesome-context-engineering)
 - [awesome-agent-memory](https://github.com/mnemoverse/awesome-agent-memory)
 
-コミュニティのプラグインディレクトリ: [Claude & Codex Plugins](https://claudecodexplugins.com/plugins/toranalytics/off-the-wall/off-the-wall).
+コミュニティのプラグインディレクトリ: [Claude & Codex Plugins](https://claudecodexplugins.com/plugins/toranalytics/dude-toldya/dude-toldya).
 
 ## ライセンス
 
 MIT © [Junebeom Seo](https://github.com/toranalytics)
 
-[Privacy](https://github.com/toranalytics/off-the-wall#privacy)
+[Privacy](https://github.com/toranalytics/dude-toldya#privacy)

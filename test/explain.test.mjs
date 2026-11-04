@@ -20,7 +20,7 @@ function box(config = '{"capture":false}') {
   writeFileSync(join(home, 'corrections.jsonl'), [...abouts.map((x, i) => rec(i, x, a)), rec('other', 'fix the flaky login tests', b), rec('legacy', 'fix the flaky login tests', a, { origin: 'unknown' }), 'not json'].join('\n') + '\n')
   if (config !== null) writeFileSync(join(home, 'config.json'), config)
   const env = { ...process.env, OTW_HOME: home, HOME: join(dir, 'h'), CODEX_HOME: join(dir, 'c'), CLAUDE_CONFIG_DIR: join(dir, 'cl'), PATH: [dirname(process.execPath), ...(process.platform === 'win32' ? [] : ['/usr/bin', '/bin'])].join(delimiter) }
-  const run = (args, cwd = a) => { const r = spawnSync(process.execPath, [join(root, 'bin/otw.mjs'), 'explain', ...args], { env, cwd, encoding: 'utf8', timeout: 8000 }); assert.equal(r.error, undefined); return r }
+  const run = (args, cwd = a) => { const r = spawnSync(process.execPath, [join(root, 'bin/duto.mjs'), 'explain', ...args], { env, cwd, encoding: 'utf8', timeout: 8000 }); assert.equal(r.error, undefined); return r }
   const snapshot = () => readdirSync(home).sort().map(f => f + ':' + statSync(join(home, f)).size + ':' + readFileSync(join(home, f), 'utf8').length).join('|')
   return { dir, home, a, b, run, snapshot }
 }
@@ -61,7 +61,7 @@ test('explain reports recall off and configuration errors, and needs a prompt', 
 test('status explains an empty store and stays quiet once there are records', () => {
   const t = box(), empty = box()
   writeFileSync(join(empty.home, 'corrections.jsonl'), '')
-  const run = (b) => spawnSync(process.execPath, [join(root, 'bin/otw.mjs'), 'status'], { env: { ...process.env, OTW_HOME: b.home, HOME: join(b.dir, 'h'), CODEX_HOME: join(b.dir, 'c') }, encoding: 'utf8', timeout: 8000 }).stdout
+  const run = (b) => spawnSync(process.execPath, [join(root, 'bin/duto.mjs'), 'status'], { env: { ...process.env, OTW_HOME: b.home, HOME: join(b.dir, 'h'), CODEX_HOME: join(b.dir, 'c') }, encoding: 'utf8', timeout: 8000 }).stdout
   assert.match(run(empty), /No corrections stored yet/)
   assert.doesNotMatch(run(t), /No corrections stored yet/)
 })

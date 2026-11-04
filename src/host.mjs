@@ -1,5 +1,5 @@
 // One small-model call through the CLI the person already uses, so it runs on their own Claude or ChatGPT plan with
-// no API key. OTW_CHILD=1 makes the child's own Off the Wall hooks do nothing.
+// no API key. OTW_CHILD=1 makes the child's own Dude Toldya hooks do nothing.
 import { spawn } from 'node:child_process'
 import { mkdtempSync, readFileSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'

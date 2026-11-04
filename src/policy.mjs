@@ -39,7 +39,7 @@ export function codexClasses(cache) {
   return out
 }
 // Listed, non-older models that no class claimed: their description names no tier, so they are not used for
-// routing unless config.json names them. `otw status` shows them so a new model is not silently ignored.
+// routing unless config.json names them. `duto status` shows them so a new model is not silently ignored.
 export function codexUnclassified(cache) {
   const used = Object.values(codexClasses(cache))
   return (cache?.models ?? [])
@@ -52,7 +52,7 @@ export const CODEX_EFFORT = { small: 'low', mid: 'medium', large: 'high' }
 export function policy(host, models = DEFAULT_MODELS[host]) {
   if (host === 'codex') {
     return [
-      '# Subagent routing (Off the Wall)',
+      '# Subagent routing (Dude Toldya)',
       'You are the orchestrator. ' + SELF,
       'Every spawn_agent call names `model` and `reasoning_effort`, chosen by what the written task leaves the subagent to decide, not by how subtle the subject is:',
       ...['small', 'mid', 'large'].map(k => `- ${models[k]}, reasoning_effort ${CODEX_EFFORT[k]}: ${CLASSES[k]}`),
@@ -60,7 +60,7 @@ export function policy(host, models = DEFAULT_MODELS[host]) {
     ].join('\n')
   }
   return [
-    '# Subagent routing (Off the Wall)',
+    '# Subagent routing (Dude Toldya)',
     'You are the orchestrator. ' + SELF,
     'Every Agent call that does not fork names `model`, chosen by what the written task leaves the subagent to decide, not by how subtle the subject is:',
     ...['small', 'mid', 'large'].map(k => `- ${models[k]}: ${CLASSES[k]}`),
@@ -87,6 +87,6 @@ export function subagentCall(host, toolName, input = {}) {
 
 export function denyReason(host) {
   return host === 'codex'
-    ? 'Off the Wall routing: name `model` and `reasoning_effort` for this subagent by the routing rule in your instructions, then call spawn_agent again.'
-    : 'Off the Wall routing: name the subagent `model` (haiku, sonnet or opus) by the routing rule in your instructions, then call Agent again.'
+    ? 'Dude Toldya routing: name `model` and `reasoning_effort` for this subagent by the routing rule in your instructions, then call spawn_agent again.'
+    : 'Dude Toldya routing: name the subagent `model` (haiku, sonnet or opus) by the routing rule in your instructions, then call Agent again.'
 }

@@ -21,7 +21,7 @@ function box() {
   writeFileSync(join(home, 'sessions', 'claude-s1.json'), JSON.stringify({ project: projectKey(a) }))
   writeFileSync(join(home, 'sessions', 'claude-s2.json'), JSON.stringify({ project: projectKey(b) }))
   const env = { ...process.env, OTW_HOME: home, HOME: join(dir, 'h'), CODEX_HOME: join(dir, 'c'), CLAUDE_CONFIG_DIR: join(dir, 'cl'), PATH: [dirname(process.execPath), ...(process.platform === 'win32' ? [] : ['/usr/bin', '/bin'])].join(delimiter) }
-  const run = (args, cwd = a) => { const r = spawnSync(process.execPath, [join(root, 'bin/otw.mjs'), 'forget', ...args], { env, cwd, encoding: 'utf8', timeout: 8000 }); assert.equal(r.error, undefined); return r }
+  const run = (args, cwd = a) => { const r = spawnSync(process.execPath, [join(root, 'bin/duto.mjs'), 'forget', ...args], { env, cwd, encoding: 'utf8', timeout: 8000 }); assert.equal(r.error, undefined); return r }
   const lines = () => readFileSync(join(home, 'corrections.jsonl'), 'utf8').split('\n').filter(Boolean)
   return { dir, home, a, b, run, lines, env }
 }

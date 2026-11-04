@@ -1,4 +1,4 @@
-// `otw report`: how often, in the history already on this machine, the person had to correct how the
+// `duto report`: how often, in the history already on this machine, the person had to correct how the
 // assistant worked, and for what. With --seed the corrections found become the quotes recall starts from.
 import { complete } from './host.mjs'
 import { batchPrompt, CATEGORIES, parseBatch } from './judge.mjs'
@@ -61,7 +61,7 @@ export function shareLink(pairs, found, { days }) {
   if (!ranked.length) return null
   const title = `My #1 (model-labelled): ${CATEGORIES[ranked[0][0]]} (${ranked[0][1]}×)`
   const body = [
-    `\`otw report\`, ${days > 0 ? `last ${days} days` : 'all history'}: ${found.length} model-labelled possible corrections in ${pairs.length} candidate replies.`,
+    `\`duto report\`, ${days > 0 ? `last ${days} days` : 'all history'}: ${found.length} model-labelled possible corrections in ${pairs.length} candidate replies.`,
     '',
     ...ranked.map(([k, n], i) => `${i + 1}. ${CATEGORIES[k]}: ${n}×`),
     '',
@@ -69,7 +69,7 @@ export function shareLink(pairs, found, { days }) {
     'I reviewed these counts before sharing. Same as yours?',
   ].join('\n')
   const q = new URLSearchParams({ category: 'show-and-tell', title, body })
-  return `https://github.com/toranalytics/off-the-wall/discussions/new?${q}`
+  return `https://github.com/toranalytics/dude-toldya/discussions/new?${q}`
 }
 
 // Preserve old records; append a provenance-tagged copy only when the source really supplies it.

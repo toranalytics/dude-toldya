@@ -4,5 +4,5 @@
 how the agent worked. Try the report on it:
 
 ```sh
-node bin/otw.mjs report --host claude --claude-dir examples/claude-history --days 0
+node bin/duto.mjs report --host claude --claude-dir examples/claude-history --days 0
 ```

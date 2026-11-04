@@ -210,7 +210,7 @@ test('the share link carries counts and category names, never the quoted replies
     { category: 'unverified', reply: 'SECRET-REPLY-3' },
   ]
   const link = shareLink(pairs, found, { days: 30 })
-  assert.ok(link.startsWith('https://github.com/toranalytics/off-the-wall/discussions/new?'))
+  assert.ok(link.startsWith('https://github.com/toranalytics/dude-toldya/discussions/new?'))
   const q = new URL(link).searchParams
   assert.equal(q.get('category'), 'show-and-tell')
   assert.equal(q.get('title'), 'My #1 (model-labelled): shrank or changed the scope (2×)')

@@ -69,7 +69,7 @@ for (const host of ['claude', 'codex']) {
       assert.deepEqual(box.hook(host, 'SessionStart'), {})
       const output = box.hook(host, 'UserPromptSubmit', { prompt })
       if (inject) {
-        assert.match(output.hookSpecificOutput.additionalContext, /\[off-the-wall\]/)
+        assert.match(output.hookSpecificOutput.additionalContext, /\[dude-toldya\]/)
         assert.equal(output.hookSpecificOutput.additionalContext.split('\n').filter(line => line.startsWith('- ')).length, 6)
         assert.deepEqual(box.hook(host, 'UserPromptSubmit', { prompt, isMeta: true }), {})
       } else assert.deepEqual(output, {})
@@ -86,7 +86,7 @@ for (const host of ['claude', 'codex']) {
 test('status labels only explicit narrow recall', () => {
   for (const [config, suffix] of [[{}, ''], [{ recallWide: false }, ' · recall narrow'], [{ recallWide: true }, '']]) {
     const box = sandbox({ capture: true, routing: true, ...config })
-    const output = box.run('bin/otw.mjs', ['status'])
+    const output = box.run('bin/duto.mjs', ['status'])
     assert.ok(output.split('\n').includes('recall on · capture on · routing on' + suffix))
   }
 })

@@ -49,7 +49,7 @@ export function codexTrust(codexHome = process.env.CODEX_HOME || join(homedir(),
     }
     if (line.startsWith('#')) continue
     if (line.startsWith('[')) {
-      target = /^\[hooks\.state\."off-the-wall@(?:[^"\\]|\\.)+"\]\s*(?:#.*)?$/.test(line)
+      target = /^\[hooks\.state\."(?:dude-toldya|off-the-wall)@(?:[^"\\]|\\.)+"\]\s*(?:#.*)?$/.test(line)
       counted = false
     } else if (target && !counted && /^trusted_hash\s*=\s*[^#\s]/.test(line)) {
       count++; counted = true

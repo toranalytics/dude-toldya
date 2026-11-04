@@ -15,7 +15,7 @@ after(() => {
   rmSync(home, { recursive: true, force: true })
 })
 const cfg = { ...DEFAULT_CONFIG, capture: false, recall: false }
-const routing = output => assert.match(output?.hookSpecificOutput?.additionalContext ?? '', /# Subagent routing \(Off the Wall\)/)
+const routing = output => assert.match(output?.hookSpecificOutput?.additionalContext ?? '', /# Subagent routing \(Dude Toldya\)/)
 const send = (host, id, name, extra = {}, options = {}) => handle(host, {
   session_id: id, cwd: home, hook_event_name: name, ...extra,
 }, { cfg, spawnJudge: () => assert.fail('routing tests must not dispatch a judge'), ...options })

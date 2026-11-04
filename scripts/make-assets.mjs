@@ -67,7 +67,7 @@ const wrap = (s, n) => s.split('\n').flatMap(l => {
 writeFileSync(
   `${root}assets/context.svg`,
   terminal('ILLUSTRATION: recall block format (example quotes, not a real selection)', [...wrap(block, 92), '', ...note], {
-    color: l => (l.startsWith('[off-the-wall]') ? C.amber : l.startsWith('- "') ? C.teal : note.includes(l) ? C.dim : C.text),
+    color: l => (l.startsWith('[dude-toldya]') ? C.amber : l.startsWith('- "') ? C.teal : note.includes(l) ? C.dim : C.text),
   }),
 )
 

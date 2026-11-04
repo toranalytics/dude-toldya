@@ -1,5 +1,5 @@
 name: Bug report
-description: Something Off the Wall did wrong, or did not do
+description: Something Dude Toldya did wrong, or did not do
 labels: [bug]
 body:
   - type: textarea
