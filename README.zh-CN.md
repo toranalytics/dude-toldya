@@ -76,10 +76,11 @@
 
 **1. 安装**
 
-在 Claude Code 中输入：
+Claude Code，在终端中：
 
 ```
-/plugin install dude-toldya --marketplace toranalytics/dude-toldya
+claude plugin marketplace add toranalytics/dude-toldya
+claude plugin install dude-toldya@dude-toldya
 ```
 
 Codex：

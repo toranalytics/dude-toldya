@@ -77,10 +77,11 @@ Dude Toldya はそうしたメッセージをローカルに保存し、回答�
 
 **1. インストール**
 
-Claude Code のプロンプトで:
+Claude Code、ターミナルで:
 
 ```
-/plugin install dude-toldya --marketplace toranalytics/dude-toldya
+claude plugin marketplace add toranalytics/dude-toldya
+claude plugin install dude-toldya@dude-toldya
 ```
 
 Codex:
