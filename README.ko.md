@@ -80,10 +80,11 @@
 
 **1. 설치**
 
-Claude Code 입력창에서:
+Claude Code, 터미널에서:
 
 ```
-/plugin install dude-toldya --marketplace toranalytics/dude-toldya
+claude plugin marketplace add toranalytics/dude-toldya
+claude plugin install dude-toldya@dude-toldya
 ```
 
 Codex:

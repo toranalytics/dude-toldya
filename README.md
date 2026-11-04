@@ -82,10 +82,11 @@ so it needs no separate API key. That does not mean nothing leaves your machine;
 
 **1. Install**
 
-Claude Code, at the prompt:
+Claude Code, in a terminal:
 
 ```
-/plugin install dude-toldya --marketplace toranalytics/dude-toldya
+claude plugin marketplace add toranalytics/dude-toldya
+claude plugin install dude-toldya@dude-toldya
 ```
 
 Codex:
