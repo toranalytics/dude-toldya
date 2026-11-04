@@ -92,6 +92,8 @@ codex plugin add dude-toldya@dude-toldya
 
 その後 Codex で `/hooks` を一度開き、Dude Toldya のフックを信頼してください。信頼されるまで Codex はプラグインのフックを実行しません。
 
+**Off the Wall から移行する場合:** プラグイン名が変わったため、`off-the-wall@off-the-wall` は「plugin not found」で失敗するようになりました。上記の `dude-toldya@dude-toldya` をインストールし、古いプラグインはプラグイン管理画面で削除して、フックが二重に動かないようにしてください。Codex ではフックの信頼をもう一度求められます。`~/.otw` に保存済みの指摘はそのまま残ります。
+
 **2. サンプル履歴でレポートを試す**(自分の履歴は不要)
 
 ```bash

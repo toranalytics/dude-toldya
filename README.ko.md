@@ -95,6 +95,8 @@ codex plugin add dude-toldya@dude-toldya
 
 그다음 Codex에서 `/hooks`를 한 번 열어 Dude Toldya 훅을 승인하세요. Codex는 승인 전까지 플러그인 훅을 실행하지 않습니다.
 
+**Off the Wall에서 넘어오셨나요?** 플러그인 이름이 바뀌어서 `off-the-wall@off-the-wall`로는 이제 설치되지 않고 "plugin not found" 오류가 납니다. 위의 `dude-toldya@dude-toldya`로 설치하고, 예전 플러그인은 플러그인 관리 화면에서 지워 훅이 두 벌 돌지 않게 하세요. Codex는 훅 승인을 다시 요청합니다. `~/.otw`에 저장된 지적은 그대로 남습니다.
+
 **2. 예시 기록으로 보고 돌려 보기** (자기 기록이 없어도 됩니다)
 
 ```bash
