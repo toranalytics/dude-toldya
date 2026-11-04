@@ -2,6 +2,8 @@
   <a href="README.md">English</a> | <strong>한국어</strong> | <a href="README.ja.md">日本語</a> | <a href="README.zh-CN.md">中文</a>
 </p>
 
+> **Dude Toldya**는 예전 이름이 **Off the Wall**이었다. 명령은 이제 `duto`이고, `otw`도 그대로 동작한다. 저장된 지적은 `~/.otw`에 그대로 있다.
+
 쉬운 설명(무엇을 하고 무엇을 못 하는지, 끝에 시험 상세): [한국어](https://toranalytics.github.io/otw-what-it-does/) · [English](https://toranalytics.github.io/en/otw-what-it-does/) · [中文](https://toranalytics.github.io/zh/otw-what-it-does/). 릴리스 노트: [변경 내역](CHANGELOG.md).
 
 <p align="center">
@@ -9,7 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/before-after-ko.png" alt="같은 요청, 같은 모델(Claude Sonnet), 각각 한 번씩 돌린 실제 출력입니다. Off the Wall이 없으면 커밋 메시지, 요약, PR 설명이 저장된 습관을 무시하고, 있으면 따릅니다. 작업 3개, 첫 실행 그대로이고 지적은 데모용으로 만든 것입니다." width="100%" />
+  <img src="assets/before-after-ko.png" alt="같은 요청, 같은 모델(Claude Sonnet), 각각 한 번씩 돌린 실제 출력입니다. Dude Toldya가 없으면 커밋 메시지, 요약, PR 설명이 저장된 습관을 무시하고, 있으면 따릅니다. 작업 3개, 첫 실행 그대로이고 지적은 데모용으로 만든 것입니다." width="100%" />
 </p>
 
 <p align="center"><sub>예시 그림이며, 측정한 숫자는 아래 근거 절에 있습니다.</sub></p>
@@ -18,21 +20,21 @@
   <img src="assets/demo.svg" alt="시험용으로 만든 예시 그림이며 녹화가 아닙니다. 1일차에 지적을 저장하고, 8일차 비슷한 요청에서 에이전트가 답하기 전에 그 지적이 원문 그대로 붙습니다." width="100%" />
 </p>
 
-<h1 align="center">Off the Wall</h1>
+<h1 align="center">Dude Toldya</h1>
 
 <p align="center">
   <strong>같은 지적, 이제 한 번만.</strong>
   <br/>
   <sub><strong>Claude Code</strong>와 <strong>Codex</strong>용 플러그인. 같은 작업 디렉터리에서 사용자가 예전에 한 지적을 다음 답 앞에 그대로 둡니다.</sub>
   <br/>
-  <sub>내 시험에서 Claude는 모델이 알 수 없는 습관을 94%(33번 중 31번) 무시했습니다. Off the Wall이 있으면 39%(33번 중 13번)였습니다. 시험용으로 만든 습관, Claude Sonnet 기준입니다. <a href="#직접-확인하기">직접 확인하기</a>.</sub>
+  <sub>내 시험에서 Claude는 모델이 알 수 없는 습관을 94%(33번 중 31번) 무시했습니다. Dude Toldya가 있으면 39%(33번 중 13번)였습니다. 시험용으로 만든 습관, Claude Sonnet 기준입니다. <a href="#직접-확인하기">직접 확인하기</a>.</sub>
   <br/>
   <sub><strong>공개 0.3.1을 haiku와 시험용 습관으로 검증한 결과, 습관을 따른 비율이 6%에서 58%로 올랐습니다.</strong> 회수 끔 2/33, 켬 19/33. 격리 프로필에서 한 번 실행한 결과입니다. <a href="docs/data/bench-public-031/result.md">시험 기록</a></sub>
 </p>
 
 <p align="center">
-  <a href="https://github.com/toranalytics/off-the-wall/actions/workflows/ci.yml"><img alt="tests" src="https://img.shields.io/github/actions/workflow/status/toranalytics/off-the-wall/ci.yml?branch=main&label=tests&style=flat-square"></a>
-  <a href="https://github.com/toranalytics/off-the-wall/releases"><img alt="release" src="https://img.shields.io/github/v/release/toranalytics/off-the-wall?style=flat-square"></a>
+  <a href="https://github.com/toranalytics/dude-toldya/actions/workflows/ci.yml"><img alt="tests" src="https://img.shields.io/github/actions/workflow/status/toranalytics/dude-toldya/ci.yml?branch=main&label=tests&style=flat-square"></a>
+  <a href="https://github.com/toranalytics/dude-toldya/releases"><img alt="release" src="https://img.shields.io/github/v/release/toranalytics/dude-toldya?style=flat-square"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-green?style=flat-square"></a>
   <img alt="Claude Code plugin" src="https://img.shields.io/badge/Claude%20Code-plugin-d97757?style=flat-square">
   <img alt="Codex plugin" src="https://img.shields.io/badge/Codex-plugin-10a37f?style=flat-square">
@@ -41,7 +43,7 @@
 
 <p align="center">
   <a href="#빠른-시작">빠른 시작</a> ·
-  <a href="#왜-off-the-wall인가">왜</a> ·
+  <a href="#왜-dude-toldya인가">왜</a> ·
   <a href="#무엇을-가장-많이-지적했나">보고</a> ·
   <a href="#에이전트가-보는-것">작동 방식</a> ·
   <a href="#하위-에이전트-모델-선택-안내">모델 선택</a> ·
@@ -50,11 +52,11 @@
   <a href="#개인정보">개인정보</a>
 </p>
 
-**모델은 내 습관을 알 수 없습니다. 커밋 메시지를 쓰는 방식이나 날짜를 쓰는 방식 같은 것입니다. 이런 일을 Claude에게 33번 시켰습니다. Off the Wall이 없으면 Claude(Sonnet)는 습관을 2번 따랐고, 있으면 20번 따랐습니다.** 전에 내가 한 지적을 그대로 다시 보여 주기 때문입니다. 시험용으로 내가 만든 습관이고, 실제 사용자 기록으로 잰 것은 아닙니다. haiku 모델에서는 1번에서 17번으로, 다시 재니 2번에서 25번으로 늘었습니다. [측정 방법](#evidence)
+**모델은 내 습관을 알 수 없습니다. 커밋 메시지를 쓰는 방식이나 날짜를 쓰는 방식 같은 것입니다. 이런 일을 Claude에게 33번 시켰습니다. Dude Toldya가 없으면 Claude(Sonnet)는 습관을 2번 따랐고, 있으면 20번 따랐습니다.** 전에 내가 한 지적을 그대로 다시 보여 주기 때문입니다. 시험용으로 내가 만든 습관이고, 실제 사용자 기록으로 잰 것은 아닙니다. haiku 모델에서는 1번에서 17번으로, 다시 재니 2번에서 25번으로 늘었습니다. [측정 방법](#evidence)
 
 **같은 작업 디렉터리에서 한 지적을, 에이전트가 답하기 전에 원문 그대로 인용합니다. 무엇을 가장 많이 지적했는지 로컬에서, 모델의 분류로 보여 주는 보고를 제공합니다. 하위 에이전트의 모델 선택 안내도 제공합니다.**
 
-"묻지 말고 골라서 해", "테스트 진짜 돌려 본 거 맞아?" 같은 지적은 보통 다음 세션이면 잊힙니다. Off the Wall은 그런
+"묻지 말고 골라서 해", "테스트 진짜 돌려 본 거 맞아?" 같은 지적은 보통 다음 세션이면 잊힙니다. Dude Toldya는 그런
 메시지를 로컬에 모아 두었다가, 답하기 전에 같은 작업 디렉터리에 기록된 지적을 최대 6개까지 사용자의 말 그대로
 에이전트에게 다시 보여 줍니다. 이미 쓰는 `claude`나 `codex` 명령을 거치므로 별도 API 키는 필요 없습니다. 그렇다고
 아무것도 밖으로 나가지 않는 것은 아닙니다. [개인정보](#개인정보)를 참고하세요.
@@ -65,9 +67,9 @@
 
 ---
 
-## 왜 Off the Wall인가
+## 왜 Dude Toldya인가
 
-| 문제 | 일어나는 일 | Off the Wall |
+| 문제 | 일어나는 일 | Dude Toldya |
 | :-- | :-- | :-- |
 | 반복되는 지적 | 이번 달에만 "묻지 말고 그냥 해"를 열 번째 말함 | 사용자가 예전에 한 말을 다음 답 앞에 둠 |
 | 남지 않는 규칙 | 지적을 깔끔한 한 줄 규칙으로 요약해도 바뀌는 게 적음 | 요약하지 않고 사용자의 말을 그대로 인용. 작은 재생 실험 하나에서 요약 규칙은 무작위 규칙보다 낫지 않았음([근거](#근거)) |
@@ -81,29 +83,29 @@
 Claude Code 입력창에서:
 
 ```
-/plugin install off-the-wall --marketplace toranalytics/off-the-wall
+/plugin install dude-toldya --marketplace toranalytics/dude-toldya
 ```
 
 Codex:
 
 ```bash
-codex plugin marketplace add toranalytics/off-the-wall
-codex plugin add off-the-wall@off-the-wall
+codex plugin marketplace add toranalytics/dude-toldya
+codex plugin add dude-toldya@dude-toldya
 ```
 
-그다음 Codex에서 `/hooks`를 한 번 열어 Off the Wall 훅을 승인하세요. Codex는 승인 전까지 플러그인 훅을 실행하지 않습니다.
+그다음 Codex에서 `/hooks`를 한 번 열어 Dude Toldya 훅을 승인하세요. Codex는 승인 전까지 플러그인 훅을 실행하지 않습니다.
 
 **2. 예시 기록으로 보고 돌려 보기** (자기 기록이 없어도 됩니다)
 
 ```bash
-git clone https://github.com/toranalytics/off-the-wall && cd off-the-wall
-node bin/otw.mjs report --host claude --claude-dir examples/claude-history --days 0
+git clone https://github.com/toranalytics/dude-toldya && cd dude-toldya
+node bin/duto.mjs report --host claude --claude-dir examples/claude-history --days 0
 ```
 
 **3. 자기 기록으로 돌리고, 거기서부터 인용 시작**
 
 ```bash
-node bin/otw.mjs report --seed
+node bin/duto.mjs report --seed
 ```
 
 `--seed` 없는 `report`는 사용자가 명시적으로 요청하는 제공자 처리이며 `capture: false`여도 실행할 수 있습니다. `--seed`는 수집이 켜져 있고 분류가 끝날 때까지 저장소·설정이 바뀌지 않아야 합니다. 권한이 철회되면 결과는 저장되지 않습니다.
@@ -114,7 +116,7 @@ node bin/otw.mjs report --seed
 
 Node 18 이상이 필요합니다. 지금까지의 실제 호스트 확인은 두 가지입니다. Codex 스모크 1회(codex-cli 0.162.1, 0.2.0)와 Claude Code 헤드리스 1회(2.1.311, 플러그인 0.2.1, 저장과 회수)이며 둘 다 Evidence에 링크했습니다. Claude Code 대화형 사용과 현재 main의 실제 호스트 효과는 아직 미검증입니다.
 
-아무 반응이 없다면: Codex는 `/hooks`에서 신뢰하기 전까지 플러그인 훅을 실행하지 않으며, 이제 `otw status`에서 훅 활동을 확인할 수 있습니다.
+아무 반응이 없다면: Codex는 `/hooks`에서 신뢰하기 전까지 플러그인 훅을 실행하지 않으며, 이제 `duto status`에서 훅 활동을 확인할 수 있습니다.
 
 ## 무엇을 가장 많이 지적했나
 
@@ -131,19 +133,19 @@ Node 18 이상이 필요합니다. 지금까지의 실제 호스트 확인은 �
 
 `--seed`를 붙이면 찾은 지적을 저장합니다. 그래서 몇 주를 써 볼 필요 없이 그 프로젝트의 다음 요청부터 인용을 시작할 수 있습니다.
 
-마지막에는 이 저장소의 [Discussions](https://github.com/toranalytics/off-the-wall/discussions/categories/show-and-tell)에
+마지막에는 이 저장소의 [Discussions](https://github.com/toranalytics/dude-toldya/discussions/categories/show-and-tell)에
 가장 많이 지적한 종류 세 가지와 횟수를 채운 글쓰기 링크가 나옵니다. 들어가는 것은 횟수와 종류 이름뿐이고, 인용된
 사용자의 말은 들어가지 않습니다. 횟수는 모델의 분류라 틀릴 수 있으니, 원문을 로컬에서 확인하고 게시 전에 내용을
 직접 검토하세요. 대신 올려 주는 것은 없습니다.
 
 ## 무엇이 회수될지 미리 보기
 
-`node bin/otw.mjs explain "<프롬프트>"`(다른 작업 폴더는 `--cwd DIR`)는 그 프롬프트의 답변 앞에 어떤 저장된 지적이 인용될지를 유사도 점수와 제외된 기록 수와 함께 보여 줍니다. 읽기 전용이라 모델을 부르지 않고 파일도 쓰지 않습니다. 예상하지 못한 인용이 왜 붙는지 가장 빨리 확인하는 방법입니다. main에 있고 아직 0.3.1 릴리스에는 없습니다.
+`node bin/duto.mjs explain "<프롬프트>"`(다른 작업 폴더는 `--cwd DIR`)는 그 프롬프트의 답변 앞에 어떤 저장된 지적이 인용될지를 유사도 점수와 제외된 기록 수와 함께 보여 줍니다. 읽기 전용이라 모델을 부르지 않고 파일도 쓰지 않습니다. 예상하지 못한 인용이 왜 붙는지 가장 빨리 확인하는 방법입니다. main에 있고 아직 0.3.1 릴리스에는 없습니다.
 
 ## 에이전트가 보는 것
 
 <p align="center">
-  <img src="assets/context.svg" alt="에이전트가 답하기 전에 Off the Wall이 붙이는 문구의 형식을 보여 주는 예시 그림: 지적 원문 예시와 지적을 예측하라는 지시. 인용문은 예시 보고에서 가져온 것이며 관련성으로 고른 것이 아님" width="92%" />
+  <img src="assets/context.svg" alt="에이전트가 답하기 전에 Dude Toldya가 붙이는 문구의 형식을 보여 주는 예시 그림: 지적 원문 예시와 지적을 예측하라는 지시. 인용문은 예시 보고에서 가져온 것이며 관련성으로 고른 것이 아님" width="92%" />
 </p>
 
 | 시점 | Claude Code | Codex |
@@ -175,8 +177,8 @@ Node 18 이상이 필요합니다. 지금까지의 실제 호스트 확인은 �
   그대로 둡니다. 필터일 뿐 사람이 쓴 입력을 완벽히 가려내는 장치가 아닙니다.
 - 매칭 가드는 저장된 지적이 요청과 충분히 비슷해 인용할 만한지를 가립니다. 현재 임계값은 초기 엔지니어링 설정입니다. 필터일 뿐 보정된 정확도 수치가 아니며,
   정밀도나 재현율을 주장하지 않습니다.
-- 기억 관리 UI는 없습니다. 0.3.1부터 `otw forget --all --yes`가 저장된 지적, 세션 상태, 로그를 모두 지우고 `otw forget --project --yes`는 현재 작업 폴더의 지적만 지웁니다. `--yes`가 없으면 둘 다 지울 대상만 보여 줍니다. 제공자 쪽 사본과 Claude Code·Codex 대화 기록은 영향을 받지 않습니다. 0.3.1 이전에는 로컬 기록을 지우려면 `~/.otw` 아래 파일을 직접 지우세요
-  ([개인정보](#개인정보)). `capture: false`이면 새 프롬프트·답 발췌를 보관하지 않습니다(이미 저장된 지적은 지워지지 않음). `node bin/otw.mjs status`로 프로젝트·출처가 붙은 기록과 격리된 기록의 수를 볼 수 있습니다.
+- 기억 관리 UI는 없습니다. 0.3.1부터 `duto forget --all --yes`가 저장된 지적, 세션 상태, 로그를 모두 지우고 `duto forget --project --yes`는 현재 작업 폴더의 지적만 지웁니다. `--yes`가 없으면 둘 다 지울 대상만 보여 줍니다. 제공자 쪽 사본과 Claude Code·Codex 대화 기록은 영향을 받지 않습니다. 0.3.1 이전에는 로컬 기록을 지우려면 `~/.otw` 아래 파일을 직접 지우세요
+  ([개인정보](#개인정보)). `capture: false`이면 새 프롬프트·답 발췌를 보관하지 않습니다(이미 저장된 지적은 지워지지 않음). `node bin/duto.mjs status`로 프로젝트·출처가 붙은 기록과 격리된 기록의 수를 볼 수 있습니다.
 
 ## 하위 에이전트 모델 선택 안내
 
@@ -184,7 +186,7 @@ Node 18 이상이 필요합니다. 지금까지의 실제 호스트 확인은 �
   <img src="assets/routing.svg" alt="과거의 작업 하나, 조건마다 2회 실행: 모델 규칙 적용 $0.171, $0.173, 미적용 $0.300, $0.439. 평균도 보장도 아님" width="92%" />
 </p>
 
-메인 모델이 오케스트레이터가 되어, 하위 에이전트에게 무엇을 결정하도록 맡기는지를 보고 모델을 고릅니다. Off the Wall은
+메인 모델이 오케스트레이터가 되어, 하위 에이전트에게 무엇을 결정하도록 맡기는지를 보고 모델을 고릅니다. Dude Toldya는
 이 안내를 주고 `model` 인자가 빠졌는지 점검할 뿐입니다. 모델을 강제하지 않으며, 더 싼 라우팅이나 비용 절감을
 보장하지 않습니다. 그림은 과거의 시험 하나입니다. [근거](#근거)를 참고하세요.
 
@@ -201,17 +203,17 @@ Node 18 이상이 필요합니다. 지금까지의 실제 호스트 확인은 �
 
 ## 직접 확인하기
 
-`otw bench`는 모델이 알 수 없는 습관이 필요한 작은 작업 11개를 내 `claude` CLI로 돌립니다. 회수를 끈 채 한 번, Off the Wall을 켠 채 한 번 돌려서 각각 습관을 지킨 횟수를 보여 줍니다. Claude Code에 플러그인이 설치돼 있고 `claude`에 로그인돼 있어야 합니다.
+`duto bench`는 모델이 알 수 없는 습관이 필요한 작은 작업 11개를 내 `claude` CLI로 돌립니다. 회수를 끈 채 한 번, Dude Toldya를 켠 채 한 번 돌려서 각각 습관을 지킨 횟수를 보여 줍니다. Claude Code에 플러그인이 설치돼 있고 `claude`에 로그인돼 있어야 합니다.
 
 **사용 가능 범위:** `bench`는 저장소 main에만 있으며 0.3.1 릴리스나 npm 패키지에는 없습니다. 먼저 빠른 시작대로 저장소를 복제한 뒤 그 폴더에서 아래 명령을 실행합니다. 첫 실행은 실험용 수정 플러그인을 썼습니다. 공개 0.3.1 원본은 별도 격리 프로필에서 한 번 확인했으며, 일반 사용 환경 전체를 검증한 것은 아닙니다. Claude Code는 전역 지침과 다른 플러그인을 불러오고 세션 기록을 남길 수 있습니다.
 
 ```bash
-node bin/otw.mjs bench                        # 무엇을 할지와 대략 비용만 보여 주고 실행하지 않음
-node bin/otw.mjs bench --yes                  # haiku로 66번, 내 요금제에서 약 0.4달러, 13분
-node bin/otw.mjs bench --yes --model sonnet   # 약 4달러
+node bin/duto.mjs bench                        # 무엇을 할지와 대략 비용만 보여 주고 실행하지 않음
+node bin/duto.mjs bench --yes                  # haiku로 66번, 내 요금제에서 약 0.4달러, 13분
+node bin/duto.mjs bench --yes --model sonnet   # 약 4달러
 ```
 
-습관은 지어낸 것이고 작업은 작습니다. 내 CLAUDE.md나 전역 규칙은 그대로 적용되므로, 작업과 맞는 내 규칙이 있으면 "끈" 쪽 점수가 올라갈 수 있습니다. 첫 실제 실행(작성자 터미널, haiku, 66번, 0.33달러): 끔 3/33, Off the Wall 20/33 ([기록](docs/data/bench-first-run/result.md)). 위 숫자는 교정 240개 저장소에서 나온 것이고 `otw bench`는 11개를 쓰므로 숫자가 다르게 나올 수 있습니다. 돌려 보셨다면 "haiku, 66번: 끔 3/33, 켬 19/33" 같은 한 줄을 [이슈](https://github.com/toranalytics/off-the-wall/issues)로 알려 주시면 충분합니다.
+습관은 지어낸 것이고 작업은 작습니다. 내 CLAUDE.md나 전역 규칙은 그대로 적용되므로, 작업과 맞는 내 규칙이 있으면 "끈" 쪽 점수가 올라갈 수 있습니다. 첫 실제 실행(작성자 터미널, haiku, 66번, 0.33달러): 끔 3/33, Dude Toldya 20/33 ([기록](docs/data/bench-first-run/result.md)). 위 숫자는 교정 240개 저장소에서 나온 것이고 `duto bench`는 11개를 쓰므로 숫자가 다르게 나올 수 있습니다. 돌려 보셨다면 "haiku, 66번: 끔 3/33, 켬 19/33" 같은 한 줄을 [이슈](https://github.com/toranalytics/dude-toldya/issues)로 알려 주시면 충분합니다.
 
 ## 근거
 
@@ -220,8 +222,8 @@ node bin/otw.mjs bench --yes --model sonnet   # 약 4달러
 | | 선호를 지킨 횟수 |
 |---|---|
 | 회수 없음 | 1/33 |
-| Off the Wall 기본 | 9/33 |
-| Off the Wall `recallWide`(0.3.0부터 기본) | 17/33 |
+| Dude Toldya 기본 | 9/33 |
+| Dude Toldya `recallWide`(0.3.0부터 기본) | 17/33 |
 
 - 더 큰 모델(haiku 대신 Claude Code의 Sonnet, 같은 작업·같은 저장소, 66회)로도 돌렸습니다. 회수 없음 2/33, 현재 기본 20/33이고 작업별로 나은 것 7개, 나쁜 것 0개입니다(부호 검정 p = 0.016). 합성 습관, 칸당 3회입니다. 기록: [docs](docs/preference-experiment-2026-10-28.md).
 - 채점기 결함을 고친 뒤 세 번째로 다시 돌렸습니다(실험 5b, 같은 저장소·같은 작업, 99회 추가). 회수 없음 2/33, 기존 기본 14/33, `recallWide` 25/33이었습니다. 같은 방향의 표본 하나이고, 수치가 높아진 것은 일부는 결함 수정, 일부는 실행마다 달라지는 변동 때문이어서 첫 표를 바꾸지는 않습니다. 기록: [docs](docs/preference-experiment-2026-10-28.md).
@@ -232,7 +234,7 @@ node bin/otw.mjs bench --yes --model sonnet   # 약 4달러
 
 
 <p align="center">
-  <img src="assets/evidence.svg" alt="아무것도 안 붙인 경우 대비 승·무·패: 실제 지적 36/3/0, Off the Wall 25/11/3, 무작위 규칙 18/15/6, 요약 규칙 14/17/8" width="92%" />
+  <img src="assets/evidence.svg" alt="아무것도 안 붙인 경우 대비 승·무·패: 실제 지적 36/3/0, Dude Toldya 25/11/3, 무작위 규칙 18/15/6, 요약 규칙 14/17/8" width="92%" />
 </p>
 
 측정한 숫자는 모두 한 사람의 기록에서 나왔습니다. 일반 법칙이 아니라 탐색적인 첫 결과로 봐 주세요. 위의 20개 중 9개
@@ -242,7 +244,7 @@ node bin/otw.mjs bench --yes --model sonnet   # 약 4달러
 **한 사람의 텍스트 재생 실험이며 일반적인 발견이 아닙니다.** 한 사용자의 기록에서 고른 요청 39개를 글로 다시 돌렸습니다.
 모두 실제로는 바로 뒤에 지적이 나왔고, 그 지적이 글만 보고 판단 가능한 경우들입니다. 조건마다 Opus 5.5가 답했습니다.
 채점은 Sonnet(사람이 아닌 모델)이 두 답을 비교하는 방식으로 했고, 어느 쪽 답인지 모르게 했으며, 순서를 바꿔 두 번
-물었습니다. 두 번 모두 같은 쪽을 골라야 승리로 셌습니다. Off the Wall 조건은 인용 6개와 "지적을 예측하라"는 한 줄을
+물었습니다. 두 번 모두 같은 쪽을 골라야 승리로 셌습니다. Dude Toldya 조건은 인용 6개와 "지적을 예측하라"는 한 줄을
 함께 쓴 것으로, 아무것도 안 붙인 답에 25승 11무 3패, 무작위 규칙에 17승 14무 8패였습니다(39건에서의 우세일 뿐
 확정된 결과가 아닙니다). 요약한 한 줄 규칙은 무작위 규칙을 이기지 못했습니다. 독립적인 재현이 아니고, 실제 제품에서의
 이점을 보여 주지 않으며, 인용과 지적 예측 문구를 함께 시험했으므로 인용만으로 차이가 생긴다는 뜻도 아닙니다.
@@ -276,7 +278,7 @@ node bin/otw.mjs bench --yes --model sonnet   # 약 4달러
 
 ## 설정
 
-`~/.otw/config.json`은 선택 사항이며, 파일이 없으면 기본값을 씁니다. 유효한 부분 설정의 스키마는 그대로이고, 명시한 값이 자동 감지보다 우선합니다. `recall`, `recallWide`, `capture`, `routing`은 문자열이 아닌 실제 JSON 불리언이어야 합니다. 맨 앞의 UTF-8 BOM 하나는 허용합니다. 기존 파일을 읽을 수 없거나 JSON이 잘못되었거나 객체가 아니거나, 자료형·알 수 없는 키·중첩 값이 잘못되면 안전하게 거부하여 네 플래그를 모두 `false`로 둡니다. 수동 `report`도 기록을 읽거나 제공자를 호출하기 전에 멈춥니다. `node bin/otw.mjs status`는 원래 설정값이나 오류 대신 정제된 `config-invalid`만 표시합니다.
+`~/.otw/config.json`은 선택 사항이며, 파일이 없으면 기본값을 씁니다. 유효한 부분 설정의 스키마는 그대로이고, 명시한 값이 자동 감지보다 우선합니다. `recall`, `recallWide`, `capture`, `routing`은 문자열이 아닌 실제 JSON 불리언이어야 합니다. 맨 앞의 UTF-8 BOM 하나는 허용합니다. 기존 파일을 읽을 수 없거나 JSON이 잘못되었거나 객체가 아니거나, 자료형·알 수 없는 키·중첩 값이 잘못되면 안전하게 거부하여 네 플래그를 모두 `false`로 둡니다. 수동 `report`도 기록을 읽거나 제공자를 호출하기 전에 멈춥니다. `node bin/duto.mjs status`는 원래 설정값이나 오류 대신 정제된 `config-invalid`만 표시합니다.
 
 ```json
 {
@@ -292,7 +294,7 @@ node bin/otw.mjs bench --yes --model sonnet   # 약 4달러
 }
 ```
 
-`node bin/otw.mjs status`로 저장 상태를 볼 수 있습니다.
+`node bin/duto.mjs status`로 저장 상태를 볼 수 있습니다.
 
 ### 넓은 회수 (0.3.0부터 기본값)
 
@@ -300,7 +302,7 @@ node bin/otw.mjs bench --yes --model sonnet   # 약 4달러
 
 ## 개인정보
 
-저장은 로컬이지만, 로컬 저장이 아무것도 밖으로 나가지 않는다는 뜻은 아닙니다. Off the Wall은 `~/.otw`에 다음을 둡니다.
+저장은 로컬이지만, 로컬 저장이 아무것도 밖으로 나가지 않는다는 뜻은 아닙니다. Dude Toldya는 `~/.otw`에 다음을 둡니다.
 - `corrections.jsonl` (더는 인용되지 않는 이전 기록 포함)
 - 세션별 상태
 - `log.jsonl`
@@ -313,8 +315,8 @@ node bin/otw.mjs bench --yes --model sonnet   # 약 4달러
 
 게시자 쪽 텔레메트리는 없고 별도 API 키도 필요 없습니다. 그렇다고 제공자가 처리하지 않는다는 뜻은 아닙니다. 제공자는
 이 발췌문을 그대로 보며, 사용 중인 요금제의 사용량이나 요금이 적용될 수 있습니다. 기본 이벤트·오류 로그에는 원문 발췌가 들어가지 않습니다. `OTW_DEBUG`를 켜면 원문 발췌가
-`~/.otw/log.jsonl`에 기록될 수 있습니다. 알 수 없거나 너무 큰 기록 프레임은 안전하게 거부되어, 프로젝트나 보류 상태를 추측하지 않습니다. `~/.otw`를 지우면 Off the Wall이 저장한 것은 잊지만, Claude Code나 Codex의
-대화 기록이나 제공자 쪽 사본까지 지워지지는 않습니다. `otw forget`은 0.3.1부터 있으며, 0.3.0 이하에는 삭제 명령이 없습니다. 공유는 수동입니다. Discussions 링크는
+`~/.otw/log.jsonl`에 기록될 수 있습니다. 알 수 없거나 너무 큰 기록 프레임은 안전하게 거부되어, 프로젝트나 보류 상태를 추측하지 않습니다. `~/.otw`를 지우면 Dude Toldya가 저장한 것은 잊지만, Claude Code나 Codex의
+대화 기록이나 제공자 쪽 사본까지 지워지지는 않습니다. `duto forget`은 0.3.1부터 있으며, 0.3.0 이하에는 삭제 명령이 없습니다. 공유는 수동입니다. Discussions 링크는
 횟수와 종류 이름만 채워 두며, 게시 전에 사용자가 검토합니다.
 
 ### 수집 제어와 삭제
@@ -337,7 +339,7 @@ node bin/otw.mjs bench --yes --model sonnet   # 약 4달러
 - 입력 분류기와 매칭 가드는 필터입니다. 자동 문구가 답변으로 처리될 수도, 관련 있는 지적이 빠질 수도 있습니다.
 - 범위는 정확히 같은 작업 디렉터리 단위입니다. 관련 폴더, 옮긴 프로젝트, worktree끼리는 인용을 공유하지 않습니다.
 - 인용은 모델에게만 보입니다. 세션 중에 사용자 화면에는 나오지 않습니다.
-- 기억 관리 UI는 아직 없습니다. 저장된 기록은 `otw forget`(0.3.1부터)으로 지울 수 있습니다.
+- 기억 관리 UI는 아직 없습니다. 저장된 기록은 `duto forget`(0.3.1부터)으로 지울 수 있습니다.
 
 ## 개발
 
@@ -361,10 +363,10 @@ OTW_DEBUG=1 claude ...       # 모든 훅 이벤트를 ~/.otw/log.jsonl에 기�
 - [awesome-context-engineering](https://github.com/yzfly/awesome-context-engineering)
 - [awesome-agent-memory](https://github.com/mnemoverse/awesome-agent-memory)
 
-커뮤니티 플러그인 디렉터리: [Claude & Codex Plugins](https://claudecodexplugins.com/plugins/toranalytics/off-the-wall/off-the-wall).
+커뮤니티 플러그인 디렉터리: [Claude & Codex Plugins](https://claudecodexplugins.com/plugins/toranalytics/dude-toldya/dude-toldya).
 
 ## 라이선스
 
 MIT © [Junebeom Seo](https://github.com/toranalytics)
 
-[Privacy](https://github.com/toranalytics/off-the-wall#privacy)
+[Privacy](https://github.com/toranalytics/dude-toldya#privacy)

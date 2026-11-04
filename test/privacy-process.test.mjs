@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url'
 import { projectKey } from '../src/scope.mjs'
 const hook = fileURLToPath(new URL('../src/hook.mjs', import.meta.url))
 const worker = fileURLToPath(new URL('../src/worker.mjs', import.meta.url))
-const cli = fileURLToPath(new URL('../bin/otw.mjs', import.meta.url))
+const cli = fileURLToPath(new URL('../bin/duto.mjs', import.meta.url))
 const posix = { skip: process.platform === 'win32' }
 const pause = ms => new Promise(r => setTimeout(r, ms))
 async function until(check) { const deadline = Date.now() + 8_000; while (!check()) { assert.ok(Date.now() < deadline, 'fake CLI/worker deadline'); await pause(15) } }

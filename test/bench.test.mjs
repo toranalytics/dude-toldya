@@ -7,7 +7,7 @@ import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { runBench } from '../src/bench.mjs'
 
-const root = join(dirname(fileURLToPath(import.meta.url)), '..'), otw = join(root, 'bin/otw.mjs')
+const root = join(dirname(fileURLToPath(import.meta.url)), '..'), otw = join(root, 'bin/duto.mjs')
 const base = mkdtempSync(join(tmpdir(), 'otw-bench-test-'))
 const run = (args, env = {}) => spawnSync(process.execPath, [otw, 'bench', ...args], { encoding: 'utf8', env: { ...process.env, ...env }, timeout: 120000 })
 // Inject a fake process so the same assertions run on Windows and Node 18.
@@ -16,7 +16,7 @@ function fakeSpawn(cfg, withBlock) {
   return (_bin, _args, opts) => {
     const c = JSON.parse(readFileSync(join(opts.env.OTW_HOME, 'config.json'), 'utf8'))
     const sid = 's' + Date.now() + Math.random().toString(36).slice(2)
-    if (withBlock) writeFileSync(join(cfg, 'projects/p', sid + '.jsonl'), c.recall === false ? 'plain' : '[off-the-wall] block')
+    if (withBlock) writeFileSync(join(cfg, 'projects/p', sid + '.jsonl'), c.recall === false ? 'plain' : '[dude-toldya] block')
     return { stdout: JSON.stringify({ type: 'result', subtype: 'success', result: 'done', session_id: sid, total_cost_usd: 0.01 }), stderr: '', status: 0 }
   }
 }
@@ -45,7 +45,7 @@ test('bench runs end to end with a fake claude and prints both conditions', asyn
   process.env.CLAUDE_CONFIG_DIR = cfg
   try {
     const code = await runBench({ yes: true, reps: 1, json: out, spawn: fakeSpawn(cfg, true), log: x => lines.push(x) })
-    assert.equal(code, 0, lines.join('\n')); assert.match(lines.join('\n'), /Habit followed: \d+\/11 \(\d+%\) with recall off, \d+\/11 \(\d+%\) with Off the Wall/)
+    assert.equal(code, 0, lines.join('\n')); assert.match(lines.join('\n'), /Habit followed: \d+\/11 \(\d+%\) with recall off, \d+\/11 \(\d+%\) with Dude Toldya/)
     const j = JSON.parse(readFileSync(out, 'utf8')); assert.equal(j.rows.length, 22); assert.equal(j.rows.filter(x => x.arm === 'none').length, 11)
     assert.ok(!existsSync(join(root, 'otw-bench.json')))
   } finally { if (old === undefined) delete process.env.CLAUDE_CONFIG_DIR; else process.env.CLAUDE_CONFIG_DIR = old }

@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Renamed from Off the Wall to Dude Toldya: plugin id `dude-toldya`, CLI `duto` (`bin/duto.mjs`). `otw` and `bin/otw.mjs` remain as an alias, so commands written below as `otw ...` still work. Stored corrections stay in `~/.otw` and `OTW_HOME` is unchanged.
+- The context block header is now `[dude-toldya]`. Codex hook trust entries recorded under the old plugin id `off-the-wall@…` are still counted by `duto status`, but Codex may ask you to trust the renamed plugin's hooks again.
+- Notes, experiment records and data below keep the name used at the time.
 - Added `otw bench`: runs 11 small tasks that each need a habit a model cannot know with your own `claude` CLI, once with recall off and once with Off the Wall on, and prints how often the habit was followed. It asks for `--yes` before it spends anything, works in temporary directories with a temporary store, and stops if the plugin does not add its block. It has an offline self-test and 5 tests (244 in total). It needs the plugin installed and `claude` logged in; first real run (haiku, 66 runs, USD 0.33): 3/33 with recall off, 20/33 with recall on.
 - README: a plainer headline and a "Check it yourself" section in four languages; `docs/experiments.md` lists every experiment, including the ones that failed.
 - Added `otw explain "<prompt>" [--cwd DIR]`: a read-only view of which stored corrections recall would attach to a prompt in a working directory, with similarity scores, how many records were excluded (other directory, not recalled) and which selection mode applies. It does not call a model or write anything, and it uses the same selection code as the hook (tests check that the picks are identical). Meant for seeing why an unrelated quote shows up.

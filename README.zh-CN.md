@@ -2,6 +2,8 @@
   <a href="README.md">English</a> | <a href="README.ko.md">한국어</a> | <a href="README.ja.md">日本語</a> | <strong>中文</strong>
 </p>
 
+> **Dude Toldya** 以前叫 **Off the Wall**。命令现在是 `duto`，`otw` 仍然可用。已保存的纠正仍在 `~/.otw`。
+
 通俗说明(能做什么、不能做什么,末尾附测试细节):[中文](https://toranalytics.github.io/zh/otw-what-it-does/) · [English](https://toranalytics.github.io/en/otw-what-it-does/) · [한국어](https://toranalytics.github.io/otw-what-it-does/)。发布说明:[更新日志](CHANGELOG.md)。
 
 <p align="center">
@@ -9,7 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/before-after-zh.png" alt="同一个请求、同一个模型(Claude Sonnet)各运行一次的真实输出:没有 Off the Wall 时,提交信息、摘要和 PR 描述会无视已保存的习惯;有它时会遵守。3 个任务,展示第一次运行,纠正是为演示编的。" width="100%" />
+  <img src="assets/before-after-zh.png" alt="同一个请求、同一个模型(Claude Sonnet)各运行一次的真实输出:没有 Dude Toldya 时,提交信息、摘要和 PR 描述会无视已保存的习惯;有它时会遵守。3 个任务,展示第一次运行,纠正是为演示编的。" width="100%" />
 </p>
 
 <p align="center"><sub>这只是示例。测量的数字在下面的依据一节。</sub></p>
@@ -18,19 +20,19 @@
   <img src="assets/demo.svg" alt="这是用编造的例子画的示意图,不是录屏。第1天保存纠正,第8天遇到类似请求时,智能体回答之前会原样附上那条纠正。" width="100%" />
 </p>
 
-<h1 align="center">Off the Wall</h1>
+<h1 align="center">Dude Toldya</h1>
 
 <p align="center">
   <strong>同样的纠正,只说一次。</strong>
   <br/>
   <sub>适用于 <strong>Claude Code</strong> 和 <strong>Codex</strong> 的插件：把你在同一工作目录中以前的纠正原文放在下一次回答之前。</sub>
   <br/>
-  <sub>在我的测试里,Claude 对模型无从得知的习惯有 94%(33 次中 31 次)没有遵守。有 Off the Wall 时是 39%(33 次中 13 次)。编造的习惯,Claude Sonnet。<a href="#自己验证">自己验证</a>。</sub>
+  <sub>在我的测试里,Claude 对模型无从得知的习惯有 94%(33 次中 31 次)没有遵守。有 Dude Toldya 时是 39%(33 次中 13 次)。编造的习惯,Claude Sonnet。<a href="#自己验证">自己验证</a>。</sub>
 </p>
 
 <p align="center">
-  <a href="https://github.com/toranalytics/off-the-wall/actions/workflows/ci.yml"><img alt="tests" src="https://img.shields.io/github/actions/workflow/status/toranalytics/off-the-wall/ci.yml?branch=main&label=tests&style=flat-square"></a>
-  <a href="https://github.com/toranalytics/off-the-wall/releases"><img alt="release" src="https://img.shields.io/github/v/release/toranalytics/off-the-wall?style=flat-square"></a>
+  <a href="https://github.com/toranalytics/dude-toldya/actions/workflows/ci.yml"><img alt="tests" src="https://img.shields.io/github/actions/workflow/status/toranalytics/dude-toldya/ci.yml?branch=main&label=tests&style=flat-square"></a>
+  <a href="https://github.com/toranalytics/dude-toldya/releases"><img alt="release" src="https://img.shields.io/github/v/release/toranalytics/dude-toldya?style=flat-square"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-green?style=flat-square"></a>
   <img alt="Claude Code plugin" src="https://img.shields.io/badge/Claude%20Code-plugin-d97757?style=flat-square">
   <img alt="Codex plugin" src="https://img.shields.io/badge/Codex-plugin-10a37f?style=flat-square">
@@ -46,11 +48,11 @@
   <a href="#privacy">隐私</a>
 </p>
 
-**模型不知道你的习惯,比如提交信息怎么写、日期怎么写。我让 Claude 做了 33 个这样的任务。没有 Off the Wall 时,Claude(Sonnet)遵守了习惯 2 次,有它时遵守了 20 次。**原因是你以前的纠正会原样再显示一遍。这些是我编出来的测试习惯,不是真实用户的记录。haiku 模型上是从 1 次到 17 次,重测时从 2 次到 25 次。[测量方法](#evidence)
+**模型不知道你的习惯,比如提交信息怎么写、日期怎么写。我让 Claude 做了 33 个这样的任务。没有 Dude Toldya 时,Claude(Sonnet)遵守了习惯 2 次,有它时遵守了 20 次。**原因是你以前的纠正会原样再显示一遍。这些是我编出来的测试习惯,不是真实用户的记录。haiku 模型上是从 1 次到 17 次,重测时从 2 次到 25 次。[测量方法](#evidence)
 
 **在智能体回答之前，逐字引用你在同一工作目录中的纠正。提供一份在本地生成、由模型分类的报告，告诉你最常纠正什么。还提供子智能体的模型选择指引。**
 
-“别问了，自己选一个做”“你真的跑过测试了吗？”这类纠正，通常到下一个会话就被忘了。Off the Wall 把这些消息保存在本地，并在
+“别问了，自己选一个做”“你真的跑过测试了吗？”这类纠正，通常到下一个会话就被忘了。Dude Toldya 把这些消息保存在本地，并在
 回答前，把同一工作目录中记录的最多 6 条纠正以你自己的原话交给智能体。它通过你已在使用的 `claude` 或 `codex` CLI 运行，
 因此不需要单独的 API 密钥。这并不意味着没有任何内容离开你的机器，请见[隐私](#privacy)。
 
@@ -60,9 +62,9 @@
 
 ---
 
-## 为什么用 Off the Wall
+## 为什么用 Dude Toldya
 
-| 问题 | 发生了什么 | Off the Wall |
+| 问题 | 发生了什么 | Dude Toldya |
 | :-- | :-- | :-- |
 | 重复的纠正 | 这个月第十次说“别问了，直接做” | 把你过去的话放在下一次回答之前 |
 | 记不住的规则 | 把纠正总结成一行规则，效果很小 | 引用你自己的原话而不是总结。在一次小规模回放实验中，总结规则并不比随机规则好（[依据](#evidence)） |
@@ -77,29 +79,29 @@
 在 Claude Code 中输入：
 
 ```
-/plugin install off-the-wall --marketplace toranalytics/off-the-wall
+/plugin install dude-toldya --marketplace toranalytics/dude-toldya
 ```
 
 Codex：
 
 ```bash
-codex plugin marketplace add toranalytics/off-the-wall
-codex plugin add off-the-wall@off-the-wall
+codex plugin marketplace add toranalytics/dude-toldya
+codex plugin add dude-toldya@dude-toldya
 ```
 
-然后在 Codex 中打开一次 `/hooks` 并信任 Off the Wall 的钩子。在信任之前，Codex 不会运行插件钩子。
+然后在 Codex 中打开一次 `/hooks` 并信任 Dude Toldya 的钩子。在信任之前，Codex 不会运行插件钩子。
 
 **2. 用示例历史试运行报告**（不需要你自己的记录）
 
 ```bash
-git clone https://github.com/toranalytics/off-the-wall && cd off-the-wall
-node bin/otw.mjs report --host claude --claude-dir examples/claude-history --days 0
+git clone https://github.com/toranalytics/dude-toldya && cd dude-toldya
+node bin/duto.mjs report --host claude --claude-dir examples/claude-history --days 0
 ```
 
 **3. 用你自己的历史运行，并从中开始引用**
 
 ```bash
-node bin/otw.mjs report --seed
+node bin/duto.mjs report --seed
 ```
 
 不带 `--seed` 的 `report` 是用户明确要求的提供商处理，即使 `capture: false` 也可以运行。`--seed` 要求启用 capture，且直到分类结束，存储和配置均保持不变；授权撤销后，结果不会保存。
@@ -110,7 +112,7 @@ node bin/otw.mjs report --seed
 需要 Node 18 或更高版本。目前在真实宿主上的确认有两项:一次 Codex 冒烟测试(codex-cli 0.162.1,0.2.0)和一次 Claude Code 无头模式运行(2.1.311,插件 0.2.1,保存与回溯),两者都已在 Evidence 中链接。Claude Code 的交互式使用以及当前 main 在真实宿主上的效果仍未验证。
 
 <a id="report"></a>
-如果没有反应：Codex 在你通过 `/hooks` 信任插件钩子之前不会运行它们，现在可用 `otw status` 查看钩子活动。
+如果没有反应：Codex 在你通过 `/hooks` 信任插件钩子之前不会运行它们，现在可用 `duto status` 查看钩子活动。
 
 ## 你最常纠正什么
 
@@ -124,19 +126,19 @@ node bin/otw.mjs report --seed
 模型或用户会得到什么结果。选中的摘录会通过你自己的 `claude` 或 `codex` CLI 发送给模型。加上 `--seed` 会保存找到的
 纠正，这样该项目从下一个提示开始就可以引用。
 
-最后会打印一个链接，打开本仓库 [Discussions](https://github.com/toranalytics/off-the-wall/discussions/categories/show-and-tell)
+最后会打印一个链接，打开本仓库 [Discussions](https://github.com/toranalytics/dude-toldya/discussions/categories/show-and-tell)
 中预填好的帖子，内容是你最常纠正的前三类及次数。只包含次数和类型名称，不包含任何被引用的原话。次数是模型分类，可能有误，请在本地核对原始消息，并在发布前自己审阅。不会自动发布。是否发布由你决定；
 这是告诉我你的第一名是否和我一样的最快方式。
 
 <a id="how"></a>
 ## 预先查看会回溯什么
 
-`node bin/otw.mjs explain "<提示词>"`(其他工作目录加 `--cwd DIR`)会显示在回答该提示词之前,哪些已保存的纠正会被引用,并附上相似度分数和被排除的记录数。它是只读的,不调用模型,也不写任何文件。这是弄清为什么会出现意料之外的引用的最快办法。它在 main 上,尚未包含在 0.3.1 发布版中。
+`node bin/duto.mjs explain "<提示词>"`(其他工作目录加 `--cwd DIR`)会显示在回答该提示词之前,哪些已保存的纠正会被引用,并附上相似度分数和被排除的记录数。它是只读的,不调用模型,也不写任何文件。这是弄清为什么会出现意料之外的引用的最快办法。它在 main 上,尚未包含在 0.3.1 发布版中。
 
 ## 智能体看到什么
 
 <p align="center">
-  <img src="assets/context.svg" alt="回答前 Off the Wall 添加的内容的格式示意图：示例纠正原文，以及预测你会如何反对的指示。引用取自示例报告，并非按相关性选出" width="92%" />
+  <img src="assets/context.svg" alt="回答前 Dude Toldya 添加的内容的格式示意图：示例纠正原文，以及预测你会如何反对的指示。引用取自示例报告，并非按相关性选出" width="92%" />
 </p>
 
 | 时机 | Claude Code | Codex |
@@ -167,7 +169,7 @@ node bin/otw.mjs report --seed
   它是过滤器，并不是完美的人类输入检测器。
 - 相关性门槛（匹配守卫）判断保存的纠正与请求是否相似到值得引用。当前阈值是初始的工程设置，并不是
   经过校准的准确率，也不声称有某个精确率或召回率。
-- 没有记忆管理界面。从 0.3.1 起，`otw forget --all --yes` 会删除所有已存的纠正、会话状态和日志，`otw forget --project --yes` 只删除当前工作目录的纠正；不带 `--yes` 时两者都只显示将被删除的内容。提供商那里的副本和你的 Claude Code/Codex 历史不受影响。在 0.3.1 之前，要清除本地记录，请自行删除 `~/.otw` 下的文件（[隐私](#privacy)）。
+- 没有记忆管理界面。从 0.3.1 起，`duto forget --all --yes` 会删除所有已存的纠正、会话状态和日志，`duto forget --project --yes` 只删除当前工作目录的纠正；不带 `--yes` 时两者都只显示将被删除的内容。提供商那里的副本和你的 Claude Code/Codex 历史不受影响。在 0.3.1 之前，要清除本地记录，请自行删除 `~/.otw` 下的文件（[隐私](#privacy)）。
   `capture: false` 会停止保存新的提示和回答摘录（已保存的纠正不会被清除）。`status` 会显示带项目和来源标记的记录与被隔离记录的数量。
 
 <a id="routing"></a>
@@ -177,7 +179,7 @@ node bin/otw.mjs report --seed
   <img src="assets/routing.svg" alt="一个历史任务、每组运行 2 次：应用模型规则 $0.171 和 $0.173，不应用 $0.300 和 $0.439。不是平均值，也不是保证" width="92%" />
 </p>
 
-主模型作为编排者，根据任务把什么留给子智能体来选择其模型。Off the Wall 只提供这个指引并检查是否缺少 `model` 参数，
+主模型作为编排者，根据任务把什么留给子智能体来选择其模型。Dude Toldya 只提供这个指引并检查是否缺少 `model` 参数，
 不会强制模型，也不保证更便宜的路由或任何成本节省。图中只是一次历史测试，详见[依据](#evidence)。
 
 | 等级 | 何时 | Claude Code | Codex |
@@ -186,23 +188,23 @@ node bin/otw.mjs report --seed
 | mid | 有明确目标和标准：调查、评审、实现、测试 | `sonnet` | 主力模型，`medium` |
 | large | 需要先判断问题是什么：根因、设计、迁移计划 | `opus` | 顶级模型，`high` |
 
-几步就能完成的工作，由主模型自己做最便宜。Codex 的模型名因账号而异，所以 Off the Wall 读取 Codex 保存的列表
+几步就能完成的工作，由主模型自己做最便宜。Codex 的模型名因账号而异，所以 Dude Toldya 读取 Codex 保存的列表
 （`~/.codex/models_cache.json`），根据描述分成三个等级。
 
 <a id="evidence"></a>
 ## 自己验证
 
-`otw bench` 用你自己的 `claude` CLI 运行 11 个小任务,每个任务都需要模型无从得知的习惯:先关闭回忆跑一次,再开启 Off the Wall 跑一次,分别显示习惯被遵守的次数。需要在 Claude Code 里装好插件,并且 `claude` 已登录。
+`duto bench` 用你自己的 `claude` CLI 运行 11 个小任务,每个任务都需要模型无从得知的习惯:先关闭回忆跑一次,再开启 Dude Toldya 跑一次,分别显示习惯被遵守的次数。需要在 Claude Code 里装好插件,并且 `claude` 已登录。
 
 **可用范围:** `bench` 只在仓库 main 分支,不在 0.3.1 发布版或 npm 包中。请先按快速开始克隆仓库,再在该目录下运行。首次运行使用隔离配置中的实验性修改插件,普通安装尚未验证。Claude Code 可能读取全局指令和其他插件,并保存会话记录。
 
 ```bash
-node bin/otw.mjs bench                        # 只显示会做什么和大致费用,不运行
-node bin/otw.mjs bench --yes                  # 在 haiku 上跑 66 次,用你自己的套餐约 0.4 美元、13 分钟
-node bin/otw.mjs bench --yes --model sonnet   # 约 4 美元
+node bin/duto.mjs bench                        # 只显示会做什么和大致费用,不运行
+node bin/duto.mjs bench --yes                  # 在 haiku 上跑 66 次,用你自己的套餐约 0.4 美元、13 分钟
+node bin/duto.mjs bench --yes --model sonnet   # 约 4 美元
 ```
 
-习惯是编的,任务很小。你自己的 CLAUDE.md 或全局规则仍然有效,所以如果有和任务相符的规则,"关闭"一栏的分数可能偏高。首次真实运行(作者本人终端,haiku,66 次,0.33 美元):关闭 3/33,Off the Wall 20/33([记录](docs/data/bench-first-run/result.md))。上面的数字来自 240 条纠正的库,而 `otw bench` 用 11 条,所以数字会不同。如果你运行了,在 [issue](https://github.com/toranalytics/off-the-wall/issues) 里写一行"haiku,66 次:关 3/33,开 19/33"就足够了。
+习惯是编的,任务很小。你自己的 CLAUDE.md 或全局规则仍然有效,所以如果有和任务相符的规则,"关闭"一栏的分数可能偏高。首次真实运行(作者本人终端,haiku,66 次,0.33 美元):关闭 3/33,Dude Toldya 20/33([记录](docs/data/bench-first-run/result.md))。上面的数字来自 240 条纠正的库,而 `duto bench` 用 11 条,所以数字会不同。如果你运行了,在 [issue](https://github.com/toranalytics/dude-toldya/issues) 里写一行"haiku,66 次:关 3/33,开 19/33"就足够了。
 
 ## 依据
 
@@ -211,8 +213,8 @@ node bin/otw.mjs bench --yes --model sonnet   # 约 4 美元
 | | 遵守偏好的次数 |
 |---|---|
 | 不召回 | 1/33 |
-| Off the Wall 默认 | 9/33 |
-| Off the Wall `recallWide`（0.3.0起默认） | 17/33 |
+| Dude Toldya 默认 | 9/33 |
+| Dude Toldya `recallWide`（0.3.0起默认） | 17/33 |
 
 - 也用更大的模型(用 Claude Code 的 Sonnet 代替 haiku,相同的任务和库,66 次)跑过:不召回 2/33,当前默认 20/33;按任务看更好的 7 个、更差的 0 个(符号检验 p = 0.016)。合成习惯,每格 3 次。记录:[docs](docs/preference-experiment-2026-10-28.md)。
 - 修复评分器缺陷后第三次重跑(实验5b,相同的库和任务,追加99次):不召回 2/33,原默认 14/33,`recallWide` 25/33。这只是方向一致的又一个样本;数字变高一部分来自修复,一部分来自每次运行的波动,所以不替换第一张表。记录:[docs](docs/preference-experiment-2026-10-28.md)。
@@ -223,7 +225,7 @@ node bin/otw.mjs bench --yes --model sonnet   # 约 4 美元
 
 
 <p align="center">
-  <img src="assets/evidence.svg" alt="与不附加任何内容相比的胜/平/负：真实纠正 36/3/0，Off the Wall 25/11/3，随机规则 18/15/6，总结规则 14/17/8" width="92%" />
+  <img src="assets/evidence.svg" alt="与不附加任何内容相比的胜/平/负：真实纠正 36/3/0，Dude Toldya 25/11/3，随机规则 18/15/6，总结规则 14/17/8" width="92%" />
 </p>
 
 所有测量数字都来自一个人的历史（9/20 的报告示例来自虚构会话），是探索性的初步结果，而不是普遍规律。
@@ -231,7 +233,7 @@ node bin/otw.mjs bench --yes --model sonnet   # 约 4 美元
 
 **这是一个人的文本回放实验，不是普遍发现。** 从一位用户的历史中挑选了 39 个请求，以文本形式重放。
 它们实际上都紧接着出现过一条纠正，且该纠正仅凭文字即可判断。Opus 5.5 在每种条件下作答，
-Sonnet（模型，不是人）在不知道来源的情况下两两比较，并交换顺序问两次，两种顺序都一致才算胜。Off the Wall 条件是 6 条引用
+Sonnet（模型，不是人）在不知道来源的情况下两两比较，并交换顺序问两次，两种顺序都一致才算胜。Dude Toldya 条件是 6 条引用
 加上“预测反对意见”这一行，对比不附加任何内容为 25 胜 11 平 3 负，对比随机规则为 17 胜 14 平 8 负（只是 39 个样本上的倾向，
 不是定论）。总结的一行规则没有胜过随机规则。这不是独立复现，也不说明在实际产品中有收益；由于引用和预测反对意见
 这一行是一起测试的，也不能说明差异仅由引用造成。它不支持“引用优于总结”这样的一般性说法。
@@ -245,7 +247,7 @@ Codex 的模型对应是按同样等级类比得出的，没有测量。判定�
 <a id="settings"></a>
 ## 设置
 
-`~/.otw/config.json` 是可选的；文件不存在时使用正常默认值。有效的部分设置仍使用原有结构，显式值优先于自动检测。`recall`、`recallWide`、`capture` 和 `routing` 必须是真正的 JSON 布尔值，不能是字符串。支持文件开头的一个 UTF-8 BOM。已有文件若无法读取、JSON 格式错误、不是对象，或含错误类型、未知键、无效嵌套值，会安全关闭：四个标志全部变为 `false`，手动 `report` 也会在读取历史或调用提供商之前停止。`node bin/otw.mjs status` 仅显示经过安全处理的 `config-invalid`，不显示原始配置值或错误。
+`~/.otw/config.json` 是可选的；文件不存在时使用正常默认值。有效的部分设置仍使用原有结构，显式值优先于自动检测。`recall`、`recallWide`、`capture` 和 `routing` 必须是真正的 JSON 布尔值，不能是字符串。支持文件开头的一个 UTF-8 BOM。已有文件若无法读取、JSON 格式错误、不是对象，或含错误类型、未知键、无效嵌套值，会安全关闭：四个标志全部变为 `false`，手动 `report` 也会在读取历史或调用提供商之前停止。`node bin/duto.mjs status` 仅显示经过安全处理的 `config-invalid`，不显示原始配置值或错误。
 
 `recall` 控制引用，`capture` 控制新摘录的保存与纠正记录，`routing` 控制模型选择指引。所有键均可省略。配置示例见 [English README](README.md#settings)。
 
@@ -256,7 +258,7 @@ Codex 的模型对应是按同样等级类比得出的，没有测量。判定�
 
 ## 隐私
 
-存储是本地的，但本地存储并不意味着没有任何内容离开你的机器。Off the Wall 在 `~/.otw` 中保存：
+存储是本地的，但本地存储并不意味着没有任何内容离开你的机器。Dude Toldya 在 `~/.otw` 中保存：
 - `corrections.jsonl`（包括不再被引用的旧记录）
 - 每个会话的状态
 - `log.jsonl`
@@ -268,8 +270,8 @@ Codex 的模型对应是按同样等级类比得出的，没有测量。判定�
 - 引用会把被引用的纠正放入宿主模型的上下文。
 
 没有发布者侧的遥测，也不需要单独的 API 密钥。但这不等于提供商不处理数据：提供商仍会看到这些摘录，
-你的套餐用量或费用可能仍会适用。默认的事件日志和错误日志不包含原始摘录。设置 `OTW_DEBUG` 后，原始摘录可能被写入 `~/.otw/log.jsonl`。未知或过大的历史帧会安全地失败（拒绝处理），不会据此猜测项目或待处理状态。删除 `~/.otw` 会忘记 Off the Wall
-保存的内容，但不会清除你的 Claude Code 或 Codex 历史，也不会清除提供商保留的副本。`otw forget` 自 0.3.1 起提供；0.3.0 及更早版本没有删除命令。分享需要手动操作：
+你的套餐用量或费用可能仍会适用。默认的事件日志和错误日志不包含原始摘录。设置 `OTW_DEBUG` 后，原始摘录可能被写入 `~/.otw/log.jsonl`。未知或过大的历史帧会安全地失败（拒绝处理），不会据此猜测项目或待处理状态。删除 `~/.otw` 会忘记 Dude Toldya
+保存的内容，但不会清除你的 Claude Code 或 Codex 历史，也不会清除提供商保留的副本。`duto forget` 自 0.3.1 起提供；0.3.0 及更早版本没有删除命令。分享需要手动操作：
 Discussions 链接只预填次数和类型名称，发布前由你自己审阅。
 
 ### Capture 控制与删除
@@ -290,7 +292,7 @@ Discussions 链接只预填次数和类型名称，发布前由你自己审阅�
 - 输入分类器和相关性门槛都是过滤器。自动化文本仍可能被当作回复，相关的纠正也可能被漏掉。
 - 范围精确到同一工作目录。相关文件夹、移动后的项目和 worktree 之间不共享引用。
 - 引用只对模型可见，会话中不会显示给你。
-- 暂时没有记忆管理界面。已保存的记录可用 `otw forget`（自 0.3.1 起）删除。
+- 暂时没有记忆管理界面。已保存的记录可用 `duto forget`（自 0.3.1 起）删除。
 
 ## 收录于
 
@@ -304,10 +306,10 @@ Discussions 链接只预填次数和类型名称，发布前由你自己审阅�
 - [awesome-context-engineering](https://github.com/yzfly/awesome-context-engineering)
 - [awesome-agent-memory](https://github.com/mnemoverse/awesome-agent-memory)
 
-社区插件目录: [Claude & Codex Plugins](https://claudecodexplugins.com/plugins/toranalytics/off-the-wall/off-the-wall).
+社区插件目录: [Claude & Codex Plugins](https://claudecodexplugins.com/plugins/toranalytics/dude-toldya/dude-toldya).
 
 ## 许可证
 
 MIT © [Junebeom Seo](https://github.com/toranalytics)
 
-[Privacy](https://github.com/toranalytics/off-the-wall#privacy)
+[Privacy](https://github.com/toranalytics/dude-toldya#privacy)

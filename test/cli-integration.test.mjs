@@ -78,7 +78,7 @@ for (const host of ['claude', 'codex']) {
     assert.match(recalled.hookSpecificOutput.additionalContext, /You did not run the invoice database backfill/)
     const elsewhere = join(box.dir, 'other workspace'); mkdirSync(elsewhere)
     assert.deepEqual(run('UserPromptSubmit', { cwd: elsewhere, prompt: 'invoice database migration backfill' }), {})
-    const status = spawnSync(process.execPath, [join(root, 'bin/otw.mjs'), 'status'], { env: box.env, encoding: 'utf8', timeout: 5000 })
+    const status = spawnSync(process.execPath, [join(root, 'bin/duto.mjs'), 'status'], { env: box.env, encoding: 'utf8', timeout: 5000 })
     assert.equal(status.status, 0); assert.match(status.stdout, /scoped\/origin-tagged 1 · quarantined 0/)
   })
   test(`${host}: an automated session source stays excluded on later source-less prompts`, () => {

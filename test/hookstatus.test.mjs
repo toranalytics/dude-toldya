@@ -20,7 +20,7 @@ function session(b, name, age = 0) {
   const at = new Date(now - age); utimesSync(file, at, at)
 }
 function trustConfig(b, text) { writeFileSync(join(b.codex, 'config.toml'), text) }
-const trusted = i => `[hooks.state."off-the-wall@off-the-wall:hooks/codex.json:event${i}:0:0"]\ntrusted_hash = "synthetic-${i}"\n`
+const trusted = i => `[hooks.state."dude-toldya@dude-toldya:hooks/codex.json:event${i}:0:0"]\ntrusted_hash = "synthetic-${i}"\n`
 
 test('no sessions: hint and no new writes', () => {
   const b = box()
@@ -52,8 +52,18 @@ test('counts five trusted plugin sections once each', () => {
   const b = box(); trustConfig(b, Array.from({ length: 5 }, (_, i) => trusted(i)).join(''))
   assert.equal(codexTrust(b.codex), 'codex hooks: 5 trusted entries')
 })
+test('trust entries recorded under the pre-rename plugin id are still counted', () => {
+  const b = box(); trustConfig(b, '[hooks.state."off-the-wall@off-the-wall:hooks/codex.json:event0:0:0"]\ntrusted_hash = "synthetic-old"\n' + trusted(1))
+  assert.equal(codexTrust(b.codex), 'codex hooks: 2 trusted entries')
+})
+test('the old otw command still runs the same CLI', () => {
+  const b = box()
+  const run = bin => spawnSync(process.execPath, [fileURLToPath(new URL('../bin/' + bin, import.meta.url)), 'status'], { env: { ...process.env, HOME: b.root, CODEX_HOME: b.codex, CLAUDE_CONFIG_DIR: join(b.root, 'claude'), OTW_HOME: b.otw }, encoding: 'utf8' })
+  const [now, old] = [run('duto.mjs'), run('otw.mjs')]
+  assert.equal(old.status, 0, old.stderr); assert.equal(old.stdout, now.stdout)
+})
 test('sections lacking trusted_hash do not count; unrelated sections do not leak into count', () => {
-  const b = box(); trustConfig(b, '[hooks.state."off-the-wall@missing"]\nother = "x"\n[unrelated]\ntrusted_hash = "no"\n[hooks.state."other@plugin"]\ntrusted_hash = "no"\n')
+  const b = box(); trustConfig(b, '[hooks.state."dude-toldya@missing"]\nother = "x"\n[unrelated]\ntrusted_hash = "no"\n[hooks.state."other@plugin"]\ntrusted_hash = "no"\n')
   assert.equal(codexTrust(b.codex), 'codex hooks: none found (trust them in /hooks)')
 })
 test('missing and unreadable config are silently omitted', () => {
@@ -66,7 +76,7 @@ test('comments, repeated keys and multiline strings do not inflate counts', () =
 })
 test('status CLI prints only counts, never unrelated secrets-looking config values', () => {
   const b = box(); trustConfig(b, 'api_key = "SYNTHETIC-SECRET-DO-NOT-PRINT"\n' + trusted(1))
-  const cli = fileURLToPath(new URL('../bin/otw.mjs', import.meta.url))
+  const cli = fileURLToPath(new URL('../bin/duto.mjs', import.meta.url))
   const p = spawnSync(process.execPath, [cli, 'status'], { env: { ...process.env, HOME: b.root, CODEX_HOME: b.codex, CLAUDE_CONFIG_DIR: join(b.root, 'claude'), OTW_HOME: b.otw }, encoding: 'utf8' })
   assert.equal(p.status, 0, p.stderr)
   assert.match(p.stdout, /hooks: no activity recorded yet/)
