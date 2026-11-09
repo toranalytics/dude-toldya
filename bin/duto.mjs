@@ -9,6 +9,7 @@ import { projectKey } from '../src/scope.mjs'
 import { report } from '../src/report.mjs'
 import { config, corrections, home } from '../src/store.mjs'
 import { runForget, USAGE as FORGET_USAGE } from '../src/forget.mjs'
+import { runExport, USAGE as EXPORT_USAGE } from '../src/export.mjs'
 import { runBench, selftest as benchSelftest, USAGE as BENCH_USAGE } from '../src/bench.mjs'
 
 const [cmd, ...rest] = process.argv.slice(2)
@@ -72,6 +73,10 @@ if (cmd === 'report') {
   if (rest.includes('--selftest')) process.exitCode = await benchSelftest()
   else if (rest.includes('--help')) console.log(BENCH_USAGE)
   else process.exitCode = await runBench({ model: flag('model', 'haiku'), reps: Number(flag('reps', 3)), yes: !!flag('yes', false), bin: flag('bin', 'claude'), json: flag('json', null), keep: rest.includes('--keep') })
+} else if (cmd === 'export') {
+  const r = runExport({ list: corrections(), args: rest, cwd: process.cwd() })
+  for (const line of r.lines) console.log(line)
+  process.exitCode = r.code
 } else if (cmd === 'forget') {
   const r = runForget(home(), rest, process.cwd())
   for (const line of r.lines) console.log(line)
@@ -84,5 +89,6 @@ if (cmd === 'report') {
   --days 0 reads all history. Try it without your own history: --host claude --claude-dir examples/claude-history --days 0
 duto status
 ${BENCH_USAGE}
-${FORGET_USAGE}`)
+${FORGET_USAGE}
+${EXPORT_USAGE}`)
 }
