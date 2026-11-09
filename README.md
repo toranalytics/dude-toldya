@@ -160,6 +160,12 @@ publish anything. Nothing is posted for you.
 
 `node bin/duto.mjs explain "<prompt>"` (add `--cwd DIR` for another working directory) shows which stored corrections would be quoted before an answer to that prompt, with similarity scores and how many records were excluded. It is read-only: no model call, no file written. It is the quickest way to see why a quote you did not expect shows up. Available on main; not in the 0.3.1 release yet.
 
+## Export your corrections as a rules file
+
+`node bin/duto.mjs export` shows the corrections stored for the current working directory as a block of bullets, word for word, and the file it would put them in (`AGENTS.md`, or `--host claude` for `CLAUDE.md`). `--yes` writes it. Re-running replaces only that marked block and leaves the rest of the file alone. Nothing is sent to a model, and it refuses a symlinked file or damaged markers.
+
+Why: recall quotes at most 6 corrections per answer and can miss the right one when many are stored, while a rules file is read in full on every request. In a synthetic Codex test with 200 made-up corrections (GPT-6.1-Sol, 11 tasks, 3 repeats), recall delivered the target quote in 15 of 33 runs and passed 19/33, while the file this command writes passed 28/33; short rewritten rules passed 31/33. That is one model, made-up clean one-sentence corrections and a small test, not a result on real histories or on Claude Code. The file holds your own past messages: do not commit or share it if they are private. Available on main; not in a release yet.
+
 ## What the agent sees
 
 <p align="center">
