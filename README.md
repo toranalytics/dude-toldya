@@ -164,7 +164,7 @@ publish anything. Nothing is posted for you.
 
 `node bin/duto.mjs export` shows the corrections stored for the current working directory as a block of bullets, word for word, and the file it would put them in (`AGENTS.md`, or `--host claude` for `CLAUDE.md`). `--yes` writes it. Re-running replaces only that marked block and leaves the rest of the file alone. Nothing is sent to a model, and it refuses a symlinked file or damaged markers.
 
-Why: recall quotes at most 6 corrections per answer and can miss the right one when many are stored, while a rules file is read in full on every request. In a synthetic Codex test with 200 made-up corrections (GPT-6.1-Sol, 11 tasks, 3 repeats), recall delivered the target quote in 15 of 33 runs and passed 19/33, while the file this command writes passed 28/33; short rewritten rules passed 31/33. That is one model, made-up clean one-sentence corrections and a small test, not a result on real histories or on Claude Code. The file holds your own past messages: do not commit or share it if they are private. Available on main; not in a release yet.
+Why: recall quotes at most 6 corrections per answer, so with many stored corrections it can miss the right one (I saw this on made-up data), while a rules file is read in full on every request. I have not measured this on real histories, on Claude Code, or with a published test record, so treat it as an option to try, not a proven fix. The file holds your own past messages: do not commit or share it if they are private. Available on main; not in a release yet.
 
 ## What the agent sees
 

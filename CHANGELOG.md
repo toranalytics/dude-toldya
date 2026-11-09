@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Added `duto export [--host codex|claude] [--cwd DIR] [--file NAME] [--yes]`: writes the corrections stored for a working directory, unchanged, as bullets in one marked block of AGENTS.md or CLAUDE.md. It previews unless `--yes`, replaces only its own block on re-run, refuses symlinked targets, damaged markers and file names outside the directory, and sends nothing to a model. 7 tests (254 in total). In a synthetic Codex test with 200 made-up corrections the written file passed 28/33 against 19/33 for recall; one model, small test, not real histories. The file contains your own past messages, so do not commit private ones.
+- Added `duto export [--host codex|claude] [--cwd DIR] [--file NAME] [--yes]`: writes the corrections stored for a working directory, unchanged, as bullets in one marked block of AGENTS.md or CLAUDE.md. It previews unless `--yes`, replaces only its own block on re-run, refuses symlinked targets, damaged markers and file names outside the directory, and sends nothing to a model. 7 tests (254 in total). Not measured on real histories or Claude Code. The file contains your own past messages, so do not commit private ones.
 - Renamed from Off the Wall to Dude Toldya: plugin id `dude-toldya`, CLI `duto` (`bin/duto.mjs`). `otw` and `bin/otw.mjs` remain as an alias, so commands written below as `otw ...` still work. Stored corrections stay in `~/.otw` and `OTW_HOME` is unchanged.
 - The context block header is now `[dude-toldya]`. Codex hook trust entries recorded under the old plugin id `off-the-wall@…` are still counted by `duto status`, but Codex may ask you to trust the renamed plugin's hooks again.
 - Notes, experiment records and data below keep the name used at the time.
