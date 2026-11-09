@@ -23,7 +23,7 @@
 <h1 align="center">Dude Toldya</h1>
 
 <p align="center">
-  <strong>같은 지적, 이제 한 번만.</strong>
+  <strong>내가 했던 지적을, 요약하지 않고 그대로.</strong>
   <br/>
   <sub><strong>Claude Code</strong>와 <strong>Codex</strong>용 플러그인. 같은 작업 디렉터리에서 사용자가 예전에 한 지적을 다음 답 앞에 그대로 둡니다.</sub>
   <br/>
@@ -95,6 +95,12 @@ codex plugin add dude-toldya@dude-toldya
 ```
 
 그다음 Codex에서 `/hooks`를 한 번 열어 Dude Toldya 훅을 승인하세요. Codex는 승인 전까지 플러그인 훅을 실행하지 않습니다.
+
+코딩 에이전트에 아래 문장을 붙여 넣어도 됩니다. 위와 같은 명령을 실행합니다. 격리된 프로필의 Codex에서 한 번 시험했고 플러그인이 설치됐습니다. 이 문장을 Claude Code에서는 시험하지 않았습니다.
+
+```text
+Install the Dude Toldya plugin from https://github.com/toranalytics/dude-toldya. If you are Claude Code, run: claude plugin marketplace add toranalytics/dude-toldya, then claude plugin install dude-toldya@dude-toldya. If you are Codex, run: codex plugin marketplace add toranalytics/dude-toldya, then codex plugin add dude-toldya@dude-toldya, and tell me to open /hooks once and trust the Dude Toldya hooks. Do not change anything else.
+```
 
 **Off the Wall에서 넘어오셨나요?** 플러그인 이름이 바뀌어서 `off-the-wall@off-the-wall`로는 이제 설치되지 않고 "plugin not found" 오류가 납니다. 위의 `dude-toldya@dude-toldya`로 설치하고, 예전 플러그인은 플러그인 관리 화면에서 지워 훅이 두 벌 돌지 않게 하세요. Codex는 훅 승인을 다시 요청합니다. `~/.otw`에 저장된 지적은 그대로 남습니다.
 

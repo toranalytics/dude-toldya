@@ -27,7 +27,7 @@ Plain-language overview of what it does and does not do, with the test details a
 <h1 align="center">Dude Toldya</h1>
 
 <p align="center">
-  <strong>Stop telling your coding agent the same thing twice.</strong>
+  <strong>Your own corrections, quoted back word for word.</strong>
   <br/>
   <sub>A plugin for <strong>Claude Code</strong> and <strong>Codex</strong> that puts your own past corrections from the same working directory in front of the next answer.</sub>
   <br/>
@@ -97,6 +97,12 @@ codex plugin add dude-toldya@dude-toldya
 ```
 
 Then open `/hooks` in Codex once and trust the Dude Toldya hooks. Codex skips plugin hooks until they are trusted.
+
+Or paste this to your coding agent. It runs the same commands as above. I tested it once with Codex in an isolated profile, where it installed the plugin. I did not test this prompt in Claude Code.
+
+```text
+Install the Dude Toldya plugin from https://github.com/toranalytics/dude-toldya. If you are Claude Code, run: claude plugin marketplace add toranalytics/dude-toldya, then claude plugin install dude-toldya@dude-toldya. If you are Codex, run: codex plugin marketplace add toranalytics/dude-toldya, then codex plugin add dude-toldya@dude-toldya, and tell me to open /hooks once and trust the Dude Toldya hooks. Do not change anything else.
+```
 
 **Coming from Off the Wall?** The plugin id changed, so `off-the-wall@off-the-wall` now fails with "plugin not found". Install `dude-toldya@dude-toldya` as above, and remove the old plugin in your plugin manager so only one copy of the hooks runs. Codex will ask you to trust the hooks again. Your saved corrections in `~/.otw` stay.
 
