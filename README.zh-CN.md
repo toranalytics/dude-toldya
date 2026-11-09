@@ -23,7 +23,7 @@
 <h1 align="center">Dude Toldya</h1>
 
 <p align="center">
-  <strong>同样的纠正,只说一次。</strong>
+  <strong>你的纠正，原文再现，不做摘要。</strong>
   <br/>
   <sub>适用于 <strong>Claude Code</strong> 和 <strong>Codex</strong> 的插件：把你在同一工作目录中以前的纠正原文放在下一次回答之前。</sub>
   <br/>
@@ -91,6 +91,12 @@ codex plugin add dude-toldya@dude-toldya
 ```
 
 然后在 Codex 中打开一次 `/hooks` 并信任 Dude Toldya 的钩子。在信任之前，Codex 不会运行插件钩子。
+
+也可以把下面这句话粘贴给你的编码代理。它会执行与上面相同的命令。我在隔离配置的 Codex 中试过一次，插件安装成功。这句话没有在 Claude Code 中测试过。
+
+```text
+Install the Dude Toldya plugin from https://github.com/toranalytics/dude-toldya. If you are Claude Code, run: claude plugin marketplace add toranalytics/dude-toldya, then claude plugin install dude-toldya@dude-toldya. If you are Codex, run: codex plugin marketplace add toranalytics/dude-toldya, then codex plugin add dude-toldya@dude-toldya, and tell me to open /hooks once and trust the Dude Toldya hooks. Do not change anything else.
+```
 
 **从 Off the Wall 升级：** 插件名已更改，`off-the-wall@off-the-wall` 现在会报 "plugin not found"。请按上面的方式安装 `dude-toldya@dude-toldya`，并在插件管理里删除旧插件，避免两套钩子同时运行。Codex 会再次要求你信任钩子。`~/.otw` 中已保存的纠正会保留。
 

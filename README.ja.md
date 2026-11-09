@@ -23,7 +23,7 @@
 <h1 align="center">Dude Toldya</h1>
 
 <p align="center">
-  <strong>同じ指摘を、二度言わせない。</strong>
+  <strong>あなたの指摘を、要約せずそのまま。</strong>
   <br/>
   <sub><strong>Claude Code</strong> と <strong>Codex</strong> 用のプラグイン。同じ作業ディレクトリであなたが以前した指摘を、次の回答の前にそのまま置きます。</sub>
   <br/>
@@ -92,6 +92,12 @@ codex plugin add dude-toldya@dude-toldya
 ```
 
 その後 Codex で `/hooks` を一度開き、Dude Toldya のフックを信頼してください。信頼されるまで Codex はプラグインのフックを実行しません。
+
+コーディングエージェントに次の文を貼り付けても構いません。上と同じコマンドを実行します。隔離プロファイルの Codex で一度試し、プラグインがインストールされました。この文を Claude Code では試していません。
+
+```text
+Install the Dude Toldya plugin from https://github.com/toranalytics/dude-toldya. If you are Claude Code, run: claude plugin marketplace add toranalytics/dude-toldya, then claude plugin install dude-toldya@dude-toldya. If you are Codex, run: codex plugin marketplace add toranalytics/dude-toldya, then codex plugin add dude-toldya@dude-toldya, and tell me to open /hooks once and trust the Dude Toldya hooks. Do not change anything else.
+```
 
 **Off the Wall から移行する場合:** プラグイン名が変わったため、`off-the-wall@off-the-wall` は「plugin not found」で失敗するようになりました。上記の `dude-toldya@dude-toldya` をインストールし、古いプラグインはプラグイン管理画面で削除して、フックが二重に動かないようにしてください。Codex ではフックの信頼をもう一度求められます。`~/.otw` に保存済みの指摘はそのまま残ります。
 
